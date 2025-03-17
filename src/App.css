@@ -1,0 +1,280 @@
+@import url("https://fonts.googleapis.com/css2?family=Georama:wght@200;300;400;500;600;700;800;900&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Serif:ital,opsz,wght@0,8..144,100..900;1,8..144,100..900&display=swap");
+
+@import "tailwindcss";
+
+:root {
+  font-family: "Georama", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Georama", sans-serif;
+}
+
+.roboto-serif {
+  font-family: "Roboto Serif", serif;
+}
+
+.great-vibes {
+  font-family: "Great Vibes", cursive;
+  -webkit-text-stroke: 1px #ff0080ad; /* Adds a stroke to the text */
+  color: #ff0080ad; /* Your desired text color */
+}
+
+.poppins {
+  font-family: "Poppins", sans-serif;
+}
+
+.brown-color {
+  color: #d35800;
+}
+
+.cake-background-color {
+  background: linear-gradient(
+    179.4deg,
+    rgb(253, 240, 233) 2.2%,
+    rgb(255, 194, 203) 96.2%
+  );
+}
+
+.pastry-background-color {
+  background: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+}
+
+.cupcake-background-color {
+  background: linear-gradient(to top, #83eaf1, #dbf3fa);
+}
+
+.weddingcake-background-color {
+  background: linear-gradient(to right, #e9defa, #f5e3e6);
+}
+
+.about-background {
+  background-image: linear-gradient(100deg, #f0f2f5 20%, #b1c3e2 100%);
+}
+
+.flexible-height {
+  height: calc(100vh - 56px);
+}
+
+@media (max-width: 640px) {
+  .flexible-height {
+    height: calc(100vh - 50px);
+  }
+}
+
+.login-background {
+  background: linear-gradient(to right, #fdf, #fee2f8);
+}
+
+.login-container-background {
+  background: linear-gradient(to left, #ffb2e4, #c5efff);
+}
+
+@media (max-width: 640px) {
+  .login-background {
+    background: url("./signup-login-bg.jpg") no-repeat center/cover;
+    position: relative;
+    overflow: hidden; /* Ensure the blur doesn't overflow */
+  }
+
+  .login-background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    backdrop-filter: blur(4px);
+    z-index: 0;
+  }
+
+  .login-container {
+    position: relative;
+  }
+  .login-container-background {
+    background: rgb(255 255 255 / 50%);
+  }
+  .input-box {
+    background: rgb(255 255 255 / 60%);
+  }
+}
+
+.login-signup-btn {
+  background: linear-gradient(to right, #ff95e6 20%, #ffb0ec 40%, aqua 100%);
+  border: 0.15rem solid white;
+  transition: all 0.3s ease;
+  color: white;
+  text-shadow: 0.15rem 0.15rem 0.1rem #cf661a;
+}
+.login-signup-btn:hover {
+  color: #ff00a6;
+  border: 0.15rem solid #ff70cd;
+  text-shadow: none;
+  background: linear-gradient(to left, #ffffff 20%, #ffffff 40%, #faffff 100%);
+}
+.ordernow-btn {
+  /* color: #ff00a6; */
+  /* border: 2px solid white; */
+  /* background: linear-gradient(to left, #fff3f3 20%, #fff2f2 40%, #fff3f3 100%); */
+  background: radial-gradient(
+    circle at 49.8% 44.4%,
+    rgb(255, 183, 194),
+    rgb(255, 137, 155)
+  );
+  text-shadow: 2px 1px #4d2000;
+}
+.ordernow-btn:hover {
+  color: #002a1b;
+  text-shadow: 2px 1px white;
+  /* border: 0.15rem solid #007049; */
+  /* background: linear-gradient(to left, #f6fff3 20%, #f5fff2 40%, #f4fff3 100%); */
+  background: radial-gradient(circle at 47.4%, #d5dee7, #9cff6b 90%);
+}
+
+.login-input-box {
+  border: 0.1rem solid #ff70cd;
+  background-color: whitesmoke;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.login-input-box:focus {
+  border-color: #23c1ff;
+  outline: none;
+}
+
+.product-details-bg {
+  background: linear-gradient(to top, #fdcbf1, #d4f3ff);
+}
+
+.pink-shadow {
+  box-shadow: 0 11px 24px rgb(236, 35, 119);
+  transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+.pink-shadow:hover {
+  box-shadow: 0 11px 50px #b8e2a3;
+  transform: scale(1.05);
+}
+
+@media (max-width: 450px) {
+  .pink-shadow {
+    box-shadow: 0 2px 10px rgba(236, 35, 119, 0.838);
+    transition: box-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
+  }
+}
+
+@media (max-width: 450px) {
+  .pink-shadow:hover {
+    box-shadow: 0 2px 25px #b8ff95d0;
+    transform: scale(1.05);
+  }
+}
+
+.white-shadow {
+  box-shadow: 0rem 0rem 1rem 0.7rem white;
+}
+
+.price-div-bg {
+  background: linear-gradient(to right, #ffafbd, #ffc3a0);
+}
+
+.price-div-bg:hover {
+  background: radial-gradient(circle at 49.8% 44.4%, #d5dee7 0%, #b8e2a3 90%);
+}
+
+.add-to-cart-btn {
+  background: linear-gradient(to left, #ffa7ea, #a5e5ff);
+}
+.add-to-cart-btn:hover {
+  border: 0.1rem solid #36c6ff;
+  box-shadow: 0 0 0.8rem #36c6ff;
+  background: linear-gradient(to right, #ffffff, #ffffff);
+}
+
+/* Custom Text Shadow Class */
+.orange-text-shadow {
+  text-shadow: 2px 1px #ff5773;
+  /* text-shadow: 0.1rem 0.1rem #cf1a1a71; */
+}
+
+.brown-text-shadow {
+  text-shadow: 0.1rem 0.1rem #4d2000;
+}
+
+@keyframes animate {
+  0% {
+    transform: translateX(0rem);
+  }
+  100% {
+    transform: translateX(0.5rem);
+  }
+}
+
+.animate-move {
+  animation: animate 0.35s ease infinite alternate;
+}
+
+.login_icon {
+  top: 1.13rem;
+}
+
+.signup_link {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px black;
+}
+
+.signup_link:hover {
+  color: #0024ff;
+  text-shadow: 1px 2px 2px white;
+  transition: all 0.1s ease;
+}
+
+.about-bg {
+  background: linear-gradient(to top, #e9defa, #fdcbf1);
+}
+
+.green-text {
+  color: #002a1b;
+}
+
+.light-green-text {
+  color: #002a1b;
+}
+
+.orange-text {
+  color: #ff6f00;
+}
+.orange-bg {
+  background-color: #ff6f00;
+}
+
+@media (max-width: 1600px) {
+  .text-17px {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 450px) {
+  .custom-grid-450 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+
+.product-conatainer-height {
+  height: calc(100vh - 56px);
+}

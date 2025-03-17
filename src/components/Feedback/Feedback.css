@@ -1,0 +1,9 @@
+/* Feedback.css */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0.1rem 0.1rem 0.2rem black;
+  }
+  .text-shadow-white {
+    text-shadow: 0.1rem 0.1rem 0.2rem white;
+  }
+}
