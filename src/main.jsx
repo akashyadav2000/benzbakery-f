@@ -8,8 +8,8 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./components/Store/store.js";
-import "./index.css";
-import "./App.css";
+import "/index.css";
+import "/App.css";
 
 const Layout = lazy(() => import("./Layout.jsx"));
 const Home = lazy(() => import("./components/Home/Home"));
