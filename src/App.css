@@ -87,7 +87,7 @@
 
 @media (max-width: 640px) {
   .login-background {
-    background: url("./signup-login-bg.jpg") no-repeat center/cover;
+    background: url("/signup-login-bg.jpg") no-repeat center/cover;
     position: relative;
     overflow: hidden; /* Ensure the blur doesn't overflow */
   }
