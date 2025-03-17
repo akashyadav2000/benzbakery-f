@@ -118,7 +118,7 @@ const CartSummary = () => {
 
       // Razorpay options
       const options = {
-        key: "rzp_test_S0d6DYSmzJxo6F",
+        key: process.env.KEY_ID,
         amount: order.amount,
         currency: order.currency,
         name: "Benz Bakery",
