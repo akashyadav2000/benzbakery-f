@@ -53,7 +53,7 @@ export const selectPurchaseHistory = (state) => state.auth.purchaseHistory;
 // Thunk to fetch purchase history
 export const fetchPurchaseHistory = (email) => async (dispatch) => {
   try {
-    const response = await axios.get(`http://localhost:3001/get-purchase-history/${email}`);
+    const response = await axios.get(`https://benz-1vam.onrender.com/get-purchase-history/${email}`);
     if (response.data.status === "Success") {
       dispatch(setPurchaseHistory(response.data.purchaseHistory));
     }

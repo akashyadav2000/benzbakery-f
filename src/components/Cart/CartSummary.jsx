@@ -47,7 +47,7 @@ const CartSummary = () => {
   const savePurchaseHistory = async (email, purchaseData) => {
     try {
       const response = await axios.post(
-        "http://localhost:3001/save-purchase-history",
+        "https://benz-1vam.onrender.com/save-purchase-history",
         {
           email,
           purchaseData,
