@@ -39,22 +39,22 @@ const UserProfile = ({ showUserInfo }) => {
   if (!isAuthenticated || location.pathname !== "/UserProfile") return null;
 
   return (
-    <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-gray-100/95 backdrop-blur-sm flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden">
-        {/* Header Section */}
-        <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+    <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-gray-100/95 backdrop-blur-sm flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl flex flex-col h-[calc(100vh-80px)]">
+        {/* Header Section - Fixed */}
+        <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center sticky top-0 z-10 shadow-lg border-b-2 border-indigo-700/20">
           <div className="flex items-center mb-4 sm:mb-0">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
+            <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-md border border-white/20">
               <span className="text-2xl text-white">👤</span>
             </div>
             <div className="ml-4">
-              <h2 className="text-xl font-bold text-white">{user?.name}</h2>
-              <p className="text-white/90 text-sm">{user?.email}</p>
+              <h2 className="text-xl font-bold text-white drop-shadow-md">{user?.name}</h2>
+              <p className="text-white/90 text-sm drop-shadow-sm">{user?.email}</p>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="px-5 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all duration-300 flex items-center"
+            className="px-5 py-2 bg-white/10 hover:bg-white/20 text-white rounded-lg transition-all duration-300 flex items-center border border-white/20 backdrop-blur-sm"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -73,34 +73,34 @@ const UserProfile = ({ showUserInfo }) => {
         </div>
 
         {/* Purchase History Section */}
-        <div className="p-6">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+        <div className="p-6 flex-1 overflow-hidden flex flex-col">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 sticky top-[108px] bg-white z-10 py-2 border-b-2 border-gray-200">
             Order History
           </h3>
 
           {purchaseHistory.length > 0 ? (
             <>
               {/* Desktop Table */}
-              <div className="hidden md:block overflow-x-auto rounded-lg border border-gray-100">
-                <table className="w-full">
-                  <thead className="bg-gray-50">
+              <div className="hidden md:block flex-1 overflow-y-auto rounded-lg border-2 border-gray-200">
+                <table className="w-full border-collapse">
+                  <thead className="bg-gray-50 sticky top-[170px] z-10 shadow-sm border-b-2 border-gray-200">
                     <tr>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Product
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Details
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Price
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Qty
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Total
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left text-sm font-semibold text-gray-600 border-r-2 border-gray-200">
                         Delivery
                       </th>
                       <th className="p-4 text-left text-sm font-semibold text-gray-600">
@@ -108,21 +108,20 @@ const UserProfile = ({ showUserInfo }) => {
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y-2 divide-gray-200">
                     {purchaseHistory.map((purchase, index) => (
                       <tr
                         key={index}
                         className="hover:bg-gray-50/50 transition-colors"
                       >
-                        <td className="p-2">
+                        <td className="p-2 border-r-2 border-gray-200">
                           <LazyLoadImage
                             src={purchase.image}
                             alt={purchase.name}
-                            // effect="blur"
                             className="w-22 h-25 object-cover rounded-xl shadow-sm"
                           />
                         </td>
-                        <td className="p-4">
+                        <td className="p-4 border-r-2 border-gray-200">
                           <div className="space-y-1">
                             <p className="font-medium text-gray-900">
                               {purchase.name}
@@ -132,12 +131,12 @@ const UserProfile = ({ showUserInfo }) => {
                             </p>
                           </div>
                         </td>
-                        <td className="p-4">₹{purchase.price}</td>
-                        <td className="p-4">{purchase.quantity}</td>
-                        <td className="p-4 font-medium text-gray-900">
+                        <td className="p-4 border-r-2 border-gray-200">₹{purchase.price}</td>
+                        <td className="p-4 border-r-2 border-gray-200">{purchase.quantity}</td>
+                        <td className="p-4 font-medium text-gray-900 border-r-2 border-gray-200">
                           ₹{purchase.total}
                         </td>
-                        <td className="p-4">
+                        <td className="p-4 border-r-2 border-gray-200">
                           <div className="flex flex-col">
                             <span className="font-medium">
                               {purchase.selectedDate || "N/A"}
@@ -159,17 +158,16 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Mobile Cards */}
-              <div className="md:hidden space-y-4">
+              <div className="md:hidden space-y-4 flex-1 overflow-y-auto">
                 {purchaseHistory.map((purchase, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl p-4 shadow-lg border border-gray-100"
+                    className="bg-white rounded-xl p-4 shadow-lg border-2 border-gray-200"
                   >
                     <div className="flex gap-4">
                       <LazyLoadImage
                         src={purchase.image}
                         alt={purchase.name}
-                        // effect="blur"
                         className="w-24 h-24 object-cover rounded-lg"
                       />
                       <div className="flex-1">
@@ -187,7 +185,7 @@ const UserProfile = ({ showUserInfo }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="mt-4 pt-4 border-t-2 border-gray-200">
                       <div className="flex justify-between text-sm">
                         <div>
                           <p className="text-gray-600 font-medium">Delivery</p>
@@ -209,7 +207,7 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Summary Section */}
-              <div className="mt-6 p-6 bg-gray-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="mt-6 p-6 bg-gray-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6 border-2 border-gray-200">
                 <div className="text-center">
                   <p className="text-sm text-gray-600 mb-1">Convenience Fee</p>
                   <p className="font-medium text-gray-900">₹99</p>
@@ -232,7 +230,7 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
             </>
           ) : (
-            <div className="text-center py-12">
+            <div className="text-center py-12 flex-1 overflow-y-auto">
               <div className="max-w-md mx-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
