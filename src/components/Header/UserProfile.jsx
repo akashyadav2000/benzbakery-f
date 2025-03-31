@@ -39,7 +39,7 @@ const UserProfile = ({ showUserInfo }) => {
   if (!isAuthenticated || location.pathname !== "/UserProfile") return null;
 
   return (
-    <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-gray-100/95 backdrop-blur-sm flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
+    <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-green-50 flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden">
         {/* Header Section */}
         <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
@@ -74,45 +74,45 @@ const UserProfile = ({ showUserInfo }) => {
 
         {/* Purchase History Section */}
         <div className="p-6">
-          <h3 className="text-2xl font-bold text-gray-800 mb-6">
+          <p className="text-[24px] font-bold roboto-serif text-pink-800 mb-6">
             Order History
-          </h3>
+          </p>
 
           {purchaseHistory.length > 0 ? (
             <>
               {/* Desktop Table */}
-              <div className="hidden md:block overflow-x-auto rounded-lg border border-gray-100">
+              <div className="hidden md:block overflow-x-auto rounded-lg border border-pink-200">
                 <table className="w-full">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                  <thead className="bg-pink-100">
+                    <tr className="green-text text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[17px]">
+                      <th className="p-4 text-left font-semibold">
                         Product
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Details
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Price
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Qty
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Total
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Delivery
                       </th>
-                      <th className="p-4 text-left text-sm font-semibold text-gray-600">
+                      <th className="p-4 text-left font-semibold">
                         Message
                       </th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-gray-100">
+                  <tbody className="divide-y divide-pink-100">
                     {purchaseHistory.map((purchase, index) => (
                       <tr
                         key={index}
-                        className="hover:bg-gray-50/50 transition-colors"
+                        className="hover:bg-pink-50/50 transition-colors"
                       >
                         <td className="p-2">
                           <LazyLoadImage
@@ -124,32 +124,32 @@ const UserProfile = ({ showUserInfo }) => {
                         </td>
                         <td className="p-4">
                           <div className="space-y-1">
-                            <p className="font-medium text-gray-900">
+                            <p className="font-medium text-[17px] text-pink-900">
                               {purchase.name}
                             </p>
-                            <p className="text-sm text-gray-500">
+                            <p className="text-[15px] font-medium text-pink-500">
                               {extractWeight(purchase.selectedSize)}
                             </p>
                           </div>
                         </td>
-                        <td className="p-4">₹{purchase.price}</td>
-                        <td className="p-4">{purchase.quantity}</td>
-                        <td className="p-4 font-medium text-gray-900">
+                        <td className="p-4 font-medium text-[17px]">₹{purchase.price}</td>
+                        <td className="p-4 font-medium text-[17px]">{purchase.quantity}</td>
+                        <td className="p-4 font-medium text-[17px] text-pink-900">
                           ₹{purchase.total}
                         </td>
                         <td className="p-4">
                           <div className="flex flex-col">
-                            <span className="font-medium">
+                            <span className="font-medium text-[17px]">
                               {purchase.selectedDate || "N/A"}
                             </span>
-                            <span className="text-sm text-gray-500">
+                            <span className="text-[15px] font-medium text-pink-500">
                               {purchase.selectedTimeSlot || "Anytime"}
                             </span>
                           </div>
                         </td>
-                        <td className="p-4 text-gray-600">
+                        <td className="p-4 text-pink-600">
                           {purchase.cakeMessage || (
-                            <span className="text-gray-400">-</span>
+                            <span className="text-pink-400">-</span>
                           )}
                         </td>
                       </tr>
@@ -163,7 +163,7 @@ const UserProfile = ({ showUserInfo }) => {
                 {purchaseHistory.map((purchase, index) => (
                   <div
                     key={index}
-                    className="bg-white rounded-xl p-4 shadow-lg border border-gray-100"
+                    className="bg-white rounded-xl p-4 shadow-lg border border-pink-100"
                   >
                     <div className="flex gap-4">
                       <LazyLoadImage
@@ -173,10 +173,10 @@ const UserProfile = ({ showUserInfo }) => {
                         className="w-24 h-24 object-cover rounded-lg"
                       />
                       <div className="flex-1">
-                        <h4 className="font-semibold text-gray-900">
+                        <h4 className="font-semibold text-pink-900">
                           {purchase.name}
                         </h4>
-                        <p className="text-sm text-gray-500 mb-2">
+                        <p className="text-sm text-pink-500 mb-2">
                           {extractWeight(purchase.selectedSize)}
                         </p>
                         <div className="flex justify-between text-sm">
@@ -187,18 +187,18 @@ const UserProfile = ({ showUserInfo }) => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-4 pt-4 border-t border-gray-100">
+                    <div className="mt-4 pt-4 border-t border-pink-100">
                       <div className="flex justify-between text-sm">
                         <div>
-                          <p className="text-gray-600 font-medium">Delivery</p>
+                          <p className="text-pink-600 font-medium">Delivery</p>
                           <p>{purchase.selectedDate || "N/A"}</p>
-                          <p className="text-gray-500">
+                          <p className="text-pink-500">
                             {purchase.selectedTimeSlot || "Anytime"}
                           </p>
                         </div>
                         <div>
-                          <p className="text-gray-600 font-medium">Message</p>
-                          <p className="text-gray-500">
+                          <p className="text-pink-600 font-medium">Message</p>
+                          <p className="text-pink-500">
                             {purchase.cakeMessage || "—"}
                           </p>
                         </div>
@@ -209,14 +209,14 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Summary Section */}
-              <div className="mt-6 p-6 bg-gray-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="mt-6 p-6 bg-pink-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 mb-1">Convenience Fee</p>
-                  <p className="font-medium text-gray-900">₹99</p>
+                  <p className="text-sm text-pink-600 mb-1">Convenience Fee</p>
+                  <p className="font-medium text-pink-900">₹99</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 mb-1">Total Items</p>
-                  <p className="font-medium text-gray-900">
+                  <p className="text-sm text-pink-600 mb-1">Total Items</p>
+                  <p className="font-medium text-pink-900">
                     {purchaseHistory.reduce(
                       (acc, item) => acc + item.quantity,
                       0
@@ -224,7 +224,7 @@ const UserProfile = ({ showUserInfo }) => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-gray-600 mb-1">Overall Total</p>
+                  <p className="text-sm text-pink-600 mb-1">Overall Total</p>
                   <p className="font-medium text-xl text-purple-600">
                     ₹{calculateTotalAmount()}
                   </p>
@@ -236,7 +236,7 @@ const UserProfile = ({ showUserInfo }) => {
               <div className="max-w-md mx-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  className="h-24 w-24 mx-auto text-gray-300 mb-4"
+                  className="h-24 w-24 mx-auto text-pink-300 mb-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -248,10 +248,10 @@ const UserProfile = ({ showUserInfo }) => {
                     d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                   />
                 </svg>
-                <h3 className="text-xl font-medium text-gray-500 mb-2">
+                <h3 className="text-xl font-medium text-pink-500 mb-2">
                   No purchases yet
                 </h3>
-                <p className="text-gray-400">
+                <p className="text-pink-400">
                   Your orders will appear here once you make a purchase
                 </p>
               </div>
