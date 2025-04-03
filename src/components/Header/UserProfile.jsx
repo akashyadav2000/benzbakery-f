@@ -42,19 +42,19 @@ const UserProfile = ({ showUserInfo }) => {
     <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-green-50 flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-pink-500 to-purple-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center">
+        <div className="bg-gradient-to-r from-pink-300 to-purple-400 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center">
           <div className="flex items-center mb-4 sm:mb-0">
             <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
               <span className="text-2xl text-white">👤</span>
             </div>
             <div className="ml-4">
-              <h2 className="text-xl font-bold text-white">{user?.name}</h2>
-              <p className="text-white/90 text-sm">{user?.email}</p>
+              <h2 className="text-xl font-semibold green-text">{user?.name}</h2>
+              <p className="text-red-700 text-[17px] font-medium">{user?.email}</p>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="px-5 py-2 bg-white/20 hover:bg-white/30 text-white rounded-lg transition-all duration-300 flex items-center"
+            className="px-5 py-2 bg-white/20 hover:bg-white/30 green-text font-semibold rounded-lg transition-all duration-300 flex items-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +74,7 @@ const UserProfile = ({ showUserInfo }) => {
 
         {/* Purchase History Section */}
         <div className="p-6">
-          <p className="text-[24px] font-bold roboto-serif text-pink-800 mb-6">
+          <p className="text-[24px] font-semibold roboto-serif text-pink-800 mb-4">
             Order History
           </p>
 
@@ -84,7 +84,7 @@ const UserProfile = ({ showUserInfo }) => {
               <div className="hidden md:block overflow-x-auto rounded-lg border border-pink-200">
                 <table className="w-full">
                   <thead className="bg-pink-100">
-                    <tr className="green-text text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[17px]">
+                    <tr className="green-text poppins text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[17px]">
                       <th className="p-4 text-left font-semibold">
                         Product
                       </th>
@@ -119,10 +119,10 @@ const UserProfile = ({ showUserInfo }) => {
                             src={purchase.image}
                             alt={purchase.name}
                             // effect="blur"
-                            className="w-22 h-25 object-cover rounded-xl shadow-sm"
+                            className="w-24 h-25 object-cover rounded-md shadow-sm"
                           />
                         </td>
-                        <td className="p-4">
+                        <td className="p-2 lg:p-4">
                           <div className="space-y-1">
                             <p className="font-medium text-[17px] text-pink-900">
                               {purchase.name}
@@ -132,14 +132,14 @@ const UserProfile = ({ showUserInfo }) => {
                             </p>
                           </div>
                         </td>
-                        <td className="p-4 font-medium text-[17px]">₹{purchase.price}</td>
-                        <td className="p-4 font-medium text-[17px]">{purchase.quantity}</td>
-                        <td className="p-4 font-medium text-[17px] text-pink-900">
+                        <td className="p-2 lg:p-4 font-medium text-[16px]">₹{purchase.price}</td>
+                        <td className="p-2 lg:p-4 font-medium text-[16px]">{purchase.quantity}</td>
+                        <td className="p-2 lg:p-4 font-medium text-[16px] text-pink-900">
                           ₹{purchase.total}
                         </td>
-                        <td className="p-4">
+                        <td className="p-2 lg:p-4 whitespace-nowrap">
                           <div className="flex flex-col">
-                            <span className="font-medium text-[17px]">
+                            <span className="font-medium text-[16px]">
                               {purchase.selectedDate || "N/A"}
                             </span>
                             <span className="text-[15px] font-medium text-pink-500">
@@ -211,12 +211,12 @@ const UserProfile = ({ showUserInfo }) => {
               {/* Summary Section */}
               <div className="mt-6 p-6 bg-pink-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6">
                 <div className="text-center">
-                  <p className="text-sm text-pink-600 mb-1">Convenience Fee</p>
-                  <p className="font-medium text-pink-900">₹99</p>
+                  <p className="font-medium text-[18px] text-pink-600 mb-1">Convenience Fee</p>
+                  <p className="font-medium text-[16px] text-pink-900">₹99</p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-pink-600 mb-1">Total Items</p>
-                  <p className="font-medium text-pink-900">
+                  <p className="font-medium text-[18px] text-pink-600 mb-1">Total Items</p>
+                  <p className="font-medium text-[16px] text-pink-900">
                     {purchaseHistory.reduce(
                       (acc, item) => acc + item.quantity,
                       0
@@ -224,8 +224,8 @@ const UserProfile = ({ showUserInfo }) => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="text-sm text-pink-600 mb-1">Overall Total</p>
-                  <p className="font-medium text-xl text-purple-600">
+                  <p className="font-medium text-[18px] text-pink-600 mb-1">Overall Total</p>
+                  <p className="font-medium text-[18px] text-purple-600">
                     ₹{calculateTotalAmount()}
                   </p>
                 </div>
