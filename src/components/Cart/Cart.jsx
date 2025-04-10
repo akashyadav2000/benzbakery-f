@@ -24,7 +24,7 @@ function Cart() {
     <main className="min-h-screen w-full px-[2%] sm:px-[3%] md:px-[5%] lg:px-[4%] xl:px-[5%] 2xl:px-[11%] py-24 bg-gray-100">
       <div className=" flex flex-col lg:flex-row gap-5 lg:gap-6 xl:gap-7 2xl:gap-8">
         {/* Cart Items Section */}
-        <div className="flex-1 bg-white rounded-lg shadow-md px-0 sm:px-3">
+        <div className="flex-1 bg-white rounded-lg shadow-md px-0 sm:px-3 max-h-fit">
           <h2 className="text-2xl poppins font-medium text-gray-800 border-b border-gray-700 pl-3 py-4">
             Shopping Cart
           </h2>
