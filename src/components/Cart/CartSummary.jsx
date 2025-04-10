@@ -143,7 +143,7 @@ const CartSummary = () => {
 
       // Razorpay options
       const options = {
-        key: import.meta.env.VITE_KEY_ID,
+        key: import.meta.env.KEY_ID,
         amount: order.amount,
         currency: order.currency,
         name: "Benz Bakery",
