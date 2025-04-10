@@ -159,6 +159,7 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Mobile Cards */}
+              {/* Mobile Cards */}
               <div className="md:hidden space-y-4">
                 {purchaseHistory.map((purchase, index) => (
                   <div
@@ -169,18 +170,17 @@ const UserProfile = ({ showUserInfo }) => {
                       <LazyLoadImage
                         src={purchase.image}
                         alt={purchase.name}
-                        // effect="blur"
                         className="w-24 h-24 object-cover rounded-lg"
                       />
                       <div className="flex-1">
                         <h4 className="font-semibold text-pink-900">
                           {purchase.name}
                         </h4>
-                        <p className="text-sm text-pink-500 mb-2">
+                        <p className="text-sm text-pink-500 mb-2 font-medium ">
                           {extractWeight(purchase.selectedSize)}
                         </p>
                         <div className="flex justify-between text-sm">
-                          <span>
+                          <span className="font-medium ">
                             ₹{purchase.price} × {purchase.quantity}
                           </span>
                           <span className="font-medium">₹{purchase.total}</span>
@@ -188,19 +188,20 @@ const UserProfile = ({ showUserInfo }) => {
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-pink-100">
-                      <div className="flex justify-between text-sm">
-                        <div>
-                          <p className="text-pink-600 font-medium">Delivery</p>
-                          <p>{purchase.selectedDate || "N/A"}</p>
-                          <p className="text-pink-500">
-                            {purchase.selectedTimeSlot || "Anytime"}
-                          </p>
-                        </div>
-                        <div>
-                          <p className="text-pink-600 font-medium">Message</p>
-                          <p className="text-pink-500">
-                            {purchase.cakeMessage || "—"}
-                          </p>
+                      <div className="text-sm">
+                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
+                          <div className="sm:flex sm:items-center">
+                            <span className="text-pink-600 font-medium mr-2 ">Delivery:</span>
+                            <span className="whitespace-nowrap font-medium ">
+                              {purchase.selectedDate || "N/A"} <span className="ml-2">{purchase.selectedTimeSlot || "Anytime"}</span>
+                            </span>
+                          </div>
+                          <div className="mt-2 sm:mt-0 sm:flex sm:items-center">
+                            <span className="text-pink-600 font-medium mr-2">Message:</span>
+                            <span className="text-pink-500 truncate font-medium ">
+                              {purchase.cakeMessage || "—"}
+                            </span>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -209,14 +210,13 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Summary Section */}
-              <div className="mt-6 p-6 bg-pink-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="mt-6 p-2 bg-pink-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-2">
                 <div className="text-center">
-                  <p className="font-medium text-[18px] text-pink-600 mb-1">Convenience Fee</p>
-                  <p className="font-medium text-[16px] text-pink-900">₹99</p>
-                </div>
-                <div className="text-center">
-                  <p className="font-medium text-[18px] text-pink-600 mb-1">Total Items</p>
-                  <p className="font-medium text-[16px] text-pink-900">
+                  <span className="font-medium text-[16px] text-pink-600 mb-1">Convenience Fee</span>
+                  <p className="font-medium text-[15px] text-pink-900">₹99</p>
+
+                  <p className="font-medium text-[16px] text-pink-600 mb-1">Total Items</p>
+                  <p className="font-medium text-[15px] text-pink-900">
                     {purchaseHistory.reduce(
                       (acc, item) => acc + item.quantity,
                       0
@@ -224,8 +224,8 @@ const UserProfile = ({ showUserInfo }) => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="font-medium text-[18px] text-pink-600 mb-1">Overall Total</p>
-                  <p className="font-medium text-[18px] text-purple-600">
+                  <p className="font-medium text-[17px] text-pink-600 mb-1">Overall Total</p>
+                  <p className="font-medium text-[16px] text-purple-600">
                     ₹{calculateTotalAmount()}
                   </p>
                 </div>
