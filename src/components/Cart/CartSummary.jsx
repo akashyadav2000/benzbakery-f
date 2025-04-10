@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { selectUser } from "../Store/authSlice";
 import { cartActions } from "../Store/cartSlice";
 import { addPurchase } from "../Store/authSlice";
 import { useNavigate } from "react-router-dom";
+
 
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart);
@@ -17,6 +19,11 @@ const CartSummary = () => {
     "cupCakeItems",
     "weddingCakeItems",
   ];
+
+  // Add state for address and pincode
+  const [address, setAddress] = useState("");
+  const [pincode, setPincode] = useState("");
+  const [error, setError] = useState("");
 
   // Fetch all items from categories and match with cartItems
   const finalItems = categories.flatMap((category) => {
@@ -62,6 +69,20 @@ const CartSummary = () => {
   };
 
   const handleProceedToBuy = async () => {
+    // Validate address and pincode
+    if (!address.trim() || !pincode.trim()) {
+      setError("Please enter both address and pincode");
+      return;
+    }
+
+    if (!/^\d{6}$/.test(pincode)) {
+      setError("Please enter a valid 6-digit pincode");
+      return;
+    }
+
+    setError(""); // Clear any previous errors
+
+
     try {
       const { data: order } = await axios.post(
         "https://benz-1vam.onrender.com/create-order",
@@ -104,8 +125,12 @@ const CartSummary = () => {
           selectedDate: cartItem.selectedDate,
           selectedTimeSlot: cartItem.selectedTimeSlot,
           cakeMessage: cartItem.cakeMessage,
+          address, // Add address to each item
+          pincode, // Add pincode to each item
         };
       });
+
+
 
       // Debug: Log the prepared purchase data
       console.log("Purchase Data:", purchaseData);
@@ -150,6 +175,7 @@ const CartSummary = () => {
     }
   };
 
+
   return (
     <div className="bg-white poppins rounded-lg shadow-md py-4 px-5">
       <h2 className="text-[17px] lg:text-[18px] xl:text-[19px] 2xl:[20px] font-medium mb-3">
@@ -174,6 +200,45 @@ const CartSummary = () => {
           </span>
         </div>
       </div>
+
+      {/* Add Address and Pincode fields */}
+      <div className="mt-4 space-y-3">
+        <div>
+          <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
+            Delivery Address *
+          </label>
+          <textarea
+            id="address"
+            rows={3}
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Enter your complete delivery address"
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="pincode" className="block text-sm font-medium text-gray-700 mb-1">
+            Pincode *
+          </label>
+          <input
+            type="text"
+            id="pincode"
+            value={pincode}
+            onChange={(e) => setPincode(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Enter 6-digit pincode"
+            maxLength={6}
+            required
+          />
+        </div>
+
+        {error && (
+          <div className="text-red-500 text-sm mt-1">{error}</div>
+        )}
+      </div>
+
       <button
         onClick={handleProceedToBuy}
         className="mt-[8px] w-full py-[5px] text-[18px] font-medium text-white bg-gradient-to-r from-pink-400 to-purple-400 rounded-md hover:from-blue-400 hover:to-cyan-400 transition-all"
