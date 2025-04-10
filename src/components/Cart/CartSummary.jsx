@@ -1,9 +1,11 @@
-import { useState, useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 import { selectUser } from "../Store/authSlice";
 import { cartActions } from "../Store/cartSlice";
 import { addPurchase } from "../Store/authSlice";
 import { useNavigate } from "react-router-dom";
+
 
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart);
