@@ -43,9 +43,9 @@ const UserProfile = ({ showUserInfo }) => {
     <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-green-50 flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
       <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden border-1 border-amber-500">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-purple-100 to-blue-100 p-3 flex flex-row justify-between  items-center sm:items-center border-b-1 border-amber-500">
+        <div className="bg-gradient-to-r from-purple-100 to-blue-100 px-1 py-2 sm:p-3 flex flex-row justify-between  items-center sm:items-center border-b-1 border-amber-500">
           <div className="flex items-center">
-            <div className="w-12 h-12 sm:w-15 sm:h-15 bg-white rounded-full flex items-center justify-center backdrop-blur-sm">
+            <div className="hidden sm:flex w-12 h-12 sm:w-15 sm:h-15 bg-white rounded-full items-center justify-center backdrop-blur-sm">
               <span className="text-[22px] sm:text-2xl">👤</span>
             </div>
             <div className="ml-4">

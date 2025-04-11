@@ -97,7 +97,7 @@ function ProductDetails({ item }) {
 
             {/* Serving Size Selection */}
             <div>
-              <span className="text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] 2xl:text-[20px] font-medium orange-text">Serving</span>
+              <span className="text-[15.5px] sm:text-[16px] md:text-[17px] xl:text-[18px] 2xl:text-[20px] font-medium orange-text">Serving</span>
               <div className="flex max-[450px]:gap-2 gap-3 max-[450px]:mt-1 mt-2">
                 {sizes.map((size) => (
                   <button
@@ -263,13 +263,13 @@ function ProductDetails({ item }) {
                   maxLength={25}
                   value={cakeMessage}
                   onChange={(e) => setCakeMessage(e.target.value)}
-                  className="border h-[30px] md:h-[32px] px-2 font-normal rounded-sm w-full sm:w-[380px]"
+                  className="border border-black h-[31px] md:h-[32px] px-2 font-normal rounded-sm w-full sm:w-[380px]"
                 />
 
                 {/* Add to Cart Button */}
                 <button
                   onClick={handleAddToCart}
-                  className="w-full max-[450px]:mt-[6px] sm:w-fit h-fit px-5 py-[5px] orange-bg text-white border-white border-1 font-medium rounded-sm flex items-center justify-center text-[14px] sm:text-[15px] md:text-[16px]"
+                  className="w-full max-[450px]:mt-[6px] sm:w-fit h-fit px-5 py-[5px] orange-bg text-white border-white border-1 font-medium rounded-sm flex items-center justify-center text-[14.5px] sm:text-[15.5px] md:text-[16.5px]"
                 >
                   Add to Cart <ChevronRight className="animate-move size-5" />
                 </button>
