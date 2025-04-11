@@ -130,7 +130,7 @@ const UserProfile = ({ showUserInfo }) => {
                             <p className="text-[15px] font-medium text-pink-500">
                               {extractWeight(purchase.selectedSize)}
                             </p>
-                            <p className="text-[15px] font-medium text-pink-500 max-w-[180px] break-words whitespace-normal ">
+                            <p className="text-[15px] font-medium text-pink-500 max-w-[175px] break-words">
                               {purchase.cakeMessage || (
                                 <span className="text-pink-400">-</span>
                               )}
@@ -153,7 +153,7 @@ const UserProfile = ({ showUserInfo }) => {
 
                           </div>
                         </td>
-                        <td className="p-4 text-pink-600 max-w-[200px] break-words whitespace-normal text-justify">
+                        <td className="p-4 text-pink-600 max-w-[200px] break-words">
                           <p className="text-[15px] font-medium text-pink-500">
                             {purchase.street || "Anytime"}
                           </p>
