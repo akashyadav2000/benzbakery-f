@@ -106,7 +106,7 @@ function ProductDetails({ item }) {
                     className={`px-2 py-1 border ${selectedSize === size
                       ? "orange-bg text-white"
                       : "bg-white green-text "
-                      } rounded-sm text-[13px] sm:text-[14px] xl:text-[16px] font-medium `}
+                      } rounded-sm text-[13.5px] sm:text-[14px] xl:text-[16px] font-medium `}
                   >
                     {size}
                   </button>
@@ -125,11 +125,11 @@ function ProductDetails({ item }) {
                     placeholder="Enter Pincode"
                     value={pincode}
                     onChange={(e) => setPincode(e.target.value)}
-                    className="border h-[30px] md:h-[32px] px-1 rounded-sm w-[200px] green-text "
+                    className="border h-[31px] md:h-[32px] px-1 rounded-sm w-[200px] green-text "
                   />
                   <button
                     onClick={checkLocation}
-                    className="orange-bg border-white border-1 text-white px-2 py-[4px] rounded-sm max-[450px]:text-[14px] text-[14px] sm:text-[15px] md:text-[16px] "
+                    className="orange-bg border-white border-1 text-white px-2 py-[4px] rounded-sm text-[14.5px] sm:text-[15px] md:text-[16px] "
                   >
                     Check
                   </button>
@@ -149,7 +149,7 @@ function ProductDetails({ item }) {
               {/* Flavor Selection */}
               <div className="w-fit flex max-[450px]:flex-row flex-col items-center max-[450px]:mt-2">
                 <span className="text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] 2xl:text-[19px] font-medium orange-text">Flavor</span>
-                <p className="orange-bg text-white px-5 max-[450px]:py-[3px] py-[4px] text-center rounded-sm whitespace-nowrap max-[450px]:ml-2 max-[450px]:mt-0 mt-2 text-[14px] sm:text-[15px] md:text-[16px]  border-white border-1">
+                <p className="orange-bg text-white px-5 max-[450px]:py-[3.5px] py-[4.5px] text-center rounded-sm whitespace-nowrap max-[450px]:ml-2 max-[450px]:mt-0 mt-2 text-[14.5px] sm:text-[15px] md:text-[16px]  border-white border-1">
                   {item.flavor}
                 </p>
               </div>
@@ -159,8 +159,8 @@ function ProductDetails({ item }) {
             <div>
               {/* Headings Row (for lg screens and above) */}
               <div className="hidden mt-[6px] min-[451px]:flex min-[451px]:flex-row min-[451px]:gap-4">
-                <h2 className="leading-none text-[14px] sm:text-[15px] md:text-[16px] xl:text-[17px] 2xl:text-[18px] font-medium orange-text">Select Delivery Time</h2>
-                <h2 className="leading-none text-[14px] sm:text-[15px] md:text-[16px] xl:text-[17px] 2xl:text-[18px] font-medium orange-text">Select Delivery Date</h2>
+                <h2 className="leading-none text-[14.5px] sm:text-[15px] md:text-[16px] xl:text-[17px] 2xl:text-[18px] font-medium orange-text">Select Delivery Time</h2>
+                <h2 className="leading-none text-[14.5px] sm:text-[15px] md:text-[16px] xl:text-[17px] 2xl:text-[18px] font-medium orange-text">Select Delivery Date</h2>
               </div>
 
               {/* Inputs Row (for lg screens and above) */}
@@ -176,7 +176,7 @@ function ProductDetails({ item }) {
                     <option value="">Select Time Slot</option>
                     <option value="9 AM - 12 PM">9:00 AM - 12:00 PM</option>
                     <option value="12 PM - 3 PM">12:00 PM - 3:00 PM</option>
-                    <option value="3 PM - 6 PM">3PM - 6:00 PM</option>
+                    <option value="3 PM - 6 PM">3:00PM - 6:00 PM</option>
                     <option value="6 PM - 9 PM">6:00 PM - 9:00 PM</option>
                   </select>
                   {/* Error Message for Time Slot */}
@@ -241,13 +241,13 @@ function ProductDetails({ item }) {
               <h2 className="leading-none mb-[3px] text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] 2xl:text-[19px] font-medium orange-text">
                 Description
               </h2>
-              <p className="text-[14px] sm:text-[15px] md:text-[16px] xl:text-[18px] font-normal text-justify green-text ">{item.cakeD}</p>
+              <p className="text-[14.5px] sm:text-[15px] md:text-[16px] xl:text-[18px] font-normal text-justify green-text ">{item.cakeD}</p>
             </div>
             <div>
               <h2 className="text-[15px] sm:text-[16px] md:text-[17px] xl:text-[18px] 2xl:text-[19px] font-medium orange-text">
                 Ingredients
               </h2>
-              <p className="text-[14px] sm:text-[15px] md:text-[16px] xl:text-[18px] font-normal text-justify green-text ">{item.ingredient}</p>
+              <p className="text-[14.5px] sm:text-[15px] md:text-[16px] xl:text-[18px] font-normal text-justify green-text ">{item.ingredient}</p>
             </div>
 
             {/* Message on Cake */}

@@ -4,6 +4,7 @@ import { selectUser, selectPurchaseHistory } from "../Store/authSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { useNavigate } from "react-router-dom";
 import { fetchPurchaseHistory, logout } from "../Store/authSlice";
+import { LogOut } from "lucide-react";
 
 const extractWeight = (selectedSize) => {
   const match = selectedSize.match(/\((\d+kg)\)/);
@@ -40,70 +41,59 @@ const UserProfile = ({ showUserInfo }) => {
 
   return (
     <div className="fixed mt-[50px] sm:mt-14 inset-0 bg-green-50 flex justify-center items-start p-4 sm:p-6 lg:p-8 overflow-auto">
-      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden">
+      <div className="bg-white rounded-2xl shadow-2xl w-full max-w-6xl overflow-hidden border-1 border-amber-500">
         {/* Header Section */}
-        <div className="bg-gradient-to-r from-pink-300 to-purple-400 p-3 flex flex-col sm:flex-row justify-between items-start sm:items-center">
-          <div className="flex items-center mb-4 sm:mb-0">
-            <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm">
-              <span className="text-2xl text-white">👤</span>
+        <div className="bg-gradient-to-r from-purple-100 to-blue-100 p-3 flex flex-row justify-between  items-center sm:items-center border-b-1 border-amber-500">
+          <div className="flex items-center">
+            <div className="w-12 h-12 sm:w-15 sm:h-15 bg-white rounded-full flex items-center justify-center backdrop-blur-sm">
+              <span className="text-[22px] sm:text-2xl">👤</span>
             </div>
             <div className="ml-4">
-              <h2 className="text-xl font-semibold green-text">{user?.name}</h2>
+              <h2 className="text-[19px] sm:text-xl font-semibold green-text">{user?.name}</h2>
               <p className="text-red-700 text-[17px] font-medium">{user?.email}</p>
             </div>
           </div>
           <button
             onClick={handleLogout}
-            className="px-5 py-2 bg-white/20 hover:bg-white/30 green-text font-semibold rounded-lg transition-all duration-300 flex items-center"
+            className="p-2 sm:px-4 sm:py-2 bg-white hover:bg-pink-200 green-text font-semibold rounded-lg transition-all duration-300 flex items-center justify-center sm:justify-start border-1 border-purple-600 cursor-pointer"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fillRule="evenodd"
-                d="M3 3a1 1 0 011 1v12a1 1 0 11-2 0V4a1 1 0 011-1zm7.707 3.293a1 1 0 010 1.414L9.414 9H17a1 1 0 110 2H9.414l1.293 1.293a1 1 0 01-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0z"
-                clipRule="evenodd"
-              />
-            </svg>
-            Sign Out
+            <LogOut className="sm:mr-2" />
+            <span className="hidden sm:inline">Sign Out</span>
           </button>
         </div>
 
         {/* Purchase History Section */}
-        <div className="p-6">
-          <p className="text-[24px] font-semibold roboto-serif text-pink-800 mb-4">
+        <div className="p-4 lg:p-6">
+          <p className="text-[20px] sm:text-[21px] lg:text-[22px] xl:text-[24px] font-semibold roboto-serif text-pink-800 mb-4">
             Order History
           </p>
 
           {purchaseHistory.length > 0 ? (
             <>
               {/* Desktop Table */}
-              <div className="hidden md:block overflow-x-auto rounded-lg border border-pink-200">
+              <div className="hidden sm:block overflow-x-auto rounded-lg border border-pink-200">
                 <table className="w-full">
                   <thead className="bg-pink-100">
-                    <tr className="green-text poppins text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[17px]">
-                      <th className="p-4 text-left font-semibold">
+                    <tr className="green-text poppins text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px]">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Product
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Details
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Price
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Qty
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Total
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold">
                         Delivery
                       </th>
-                      <th className="p-4 text-left font-semibold">
+                      <th className="px-2 py-4 lg:p-4 text-center font-semibold hidden md:block">
                         Address
                       </th>
                     </tr>
@@ -114,7 +104,7 @@ const UserProfile = ({ showUserInfo }) => {
                         key={index}
                         className="hover:bg-pink-50/50 transition-colors"
                       >
-                        <td className="p-2">
+                        <td className="p-2 items-center justify-center flex">
                           <LazyLoadImage
                             src={purchase.image}
                             alt={purchase.name}
@@ -124,41 +114,47 @@ const UserProfile = ({ showUserInfo }) => {
                         </td>
                         <td className="p-2 lg:p-4">
                           <div className="space-y-1">
-                            <p className="font-medium text-[17px] text-pink-900">
+                            <p className="font-medium text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px] text-center text-green ">
                               {purchase.name}
                             </p>
-                            <p className="text-[15px] font-medium text-pink-500">
+                            <p className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-medium text-pink-900 text-center">
                               {extractWeight(purchase.selectedSize)}
                             </p>
-                            <p className="text-[15px] font-medium text-pink-500 max-w-[175px] break-words">
-                              {purchase.cakeMessage || (
-                                <span className="text-pink-400">-</span>
-                              )}
+                            <p className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-medium text-pink-500 text-center">
+                              {purchase.number}
                             </p>
+                            {/* <p className="text-[15px] font-medium text-pink-500 max-w-[180px] break-words text-center">
+                              {purchase.cakeMessage || (
+                                <span className="text-pink-400 text-center">-</span>
+                              )}
+                            </p> */}
                           </div>
                         </td>
-                        <td className="p-2 lg:p-4 font-medium text-[16px]">₹{purchase.price}</td>
-                        <td className="p-2 lg:p-4 font-medium text-[16px]">{purchase.quantity}</td>
-                        <td className="p-2 lg:p-4 font-medium text-[16px] text-pink-900">
-                          ₹{purchase.total}
+                        <td className="p-2 lg:p-4 font-medium text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px] text-center">₹ {purchase.price}</td>
+                        <td className="p-2 lg:p-4 font-medium text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px] text-center">{purchase.quantity}</td>
+                        <td className="p-2 lg:p-4 font-medium text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px] text-pink-900 text-center">
+                          ₹ {purchase.total}
                         </td>
                         <td className="p-2 lg:p-4 whitespace-nowrap">
                           <div className="flex flex-col">
-                            <span className="font-medium text-[16px]">
+                            <span className="font-medium text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[17px] text-center">
                               {purchase.selectedDate || "N/A"}
                             </span>
-                            <span className="text-[15px] font-medium text-pink-500">
-                              {purchase.selectedTimeSlot || "Anytime"}
+                            <span className="text-[15px] font-medium text-pink-500 text-center">
+                              {purchase.selectedTimeSlot || ""}
                             </span>
 
                           </div>
                         </td>
-                        <td className="p-4 text-pink-600 max-w-[200px] break-words">
-                          <p className="text-[15px] font-medium text-pink-500">
-                            {purchase.street || "Anytime"}
+                        <td className="p-2 lg:p-4 text-pink-600 max-w-[175px] lg:max-w-[200px] break-words align-middle hidden md:table-cell">
+
+                          <p className="text-[15px] font-medium text-pink-500 text-center line-clamp-3 lg:line-clamp-2 overflow-hidden text-ellipsis">
+                            {purchase.street || ""}
                           </p>
-                          <p className="text-[15px] font-medium text-pink-500">
-                            {purchase.pincode || "Anytime"}
+
+
+                          <p className="text-[15px] font-medium text-pink-500 text-center">
+                            {purchase.pincode || ""}
                           </p>
 
                         </td>
@@ -169,7 +165,7 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Mobile Cards */}
-              <div className="md:hidden space-y-4">
+              <div className="sm:hidden space-y-4">
                 {purchaseHistory.map((purchase, index) => (
                   <div
                     key={index}
@@ -190,27 +186,37 @@ const UserProfile = ({ showUserInfo }) => {
                         </p>
                         <div className="flex justify-between text-sm">
                           <span className="font-medium ">
-                            ₹{purchase.price} × {purchase.quantity}
+                            ₹ {purchase.price} × {purchase.quantity}
                           </span>
-                          <span className="font-medium">₹{purchase.total}</span>
+                          <span className="font-medium">₹ {purchase.total}</span>
                         </div>
+
                       </div>
                     </div>
                     <div className="mt-4 pt-4 border-t border-pink-100">
                       <div className="text-sm">
-                        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center">
-                          <div className="sm:flex sm:items-center">
-                            <span className="text-pink-600 font-medium mr-2 ">Delivery:</span>
+                        <div>
+                          <div className="flex items-center">
+                            <p className="text-pink-600 font-medium mr-2 ">Delivery:</p>
+                            <p className="whitespace-nowrap font-medium ">
+                              {purchase.selectedDate || "N/A"} <span className="ml-2">{purchase.selectedTimeSlot || ""}</span>
+                            </p>
+                          </div>
+                          <div className="flex items-center">
+                            <p className="text-pink-600 font-medium mr-2 ">Pincode:</p>
                             <span className="whitespace-nowrap font-medium ">
-                              {purchase.selectedDate || "N/A"} <span className="ml-2">{purchase.selectedTimeSlot || "Anytime"}</span>
+                              {purchase.pincode || ""}
                             </span>
                           </div>
-                          <div className="mt-2 sm:mt-0 sm:flex sm:items-center">
-                            <span className="text-pink-600 font-medium mr-2">Message:</span>
-                            <span className="text-pink-500 truncate font-medium ">
-                              {purchase.cakeMessage || "—"}
+                          <div className="flex">
+                            <p className="text-pink-600 font-medium mr-2 ">Location:</p>
+                            <span className="break-all font-medium">
+                              {purchase.street?.length > 35
+                                ? `${purchase.street.slice(0, 35)}...`
+                                : purchase.street}
                             </span>
                           </div>
+
                         </div>
                       </div>
                     </div>
@@ -219,13 +225,12 @@ const UserProfile = ({ showUserInfo }) => {
               </div>
 
               {/* Summary Section */}
-              <div className="mt-6 p-2 bg-pink-50 rounded-xl grid grid-cols-1 sm:grid-cols-3 gap-2">
+              <div className="mt-6 p-2 bg-pink-50 rounded-xl grid grid-cols-2 gap-2">
                 <div className="text-center">
-                  <span className="font-medium text-[16px] text-pink-600 mb-1">Convenience Fee</span>
-                  <p className="font-medium text-[15px] text-pink-900">₹99</p>
-
-                  <p className="font-medium text-[16px] text-pink-600 mb-1">Total Items</p>
-                  <p className="font-medium text-[15px] text-pink-900">
+                  {/* <p className="font-medium text-[16px] text-pink-600 mb-1">Convenience Fee</p>
+                  <p className="font-medium text-[15px] text-pink-900">₹99</p> */}
+                  <p className="font-medium text-[15px] sm:text-[16px] lg:text-[17px] xl:text-[18px] text-green mb-1">Total Items</p>
+                  <p className="font-medium text-[15px] sm:text-[16px] lg:text-[17px] xl:text-[18px] text-red-500">
                     {purchaseHistory.reduce(
                       (acc, item) => acc + item.quantity,
                       0
@@ -233,9 +238,9 @@ const UserProfile = ({ showUserInfo }) => {
                   </p>
                 </div>
                 <div className="text-center">
-                  <p className="font-medium text-[17px] text-pink-600 mb-1">Overall Total</p>
-                  <p className="font-medium text-[16px] text-purple-600">
-                    ₹{calculateTotalAmount()}
+                  <p className="font-medium text-[15px] sm:text-[16px] lg:text-[17px] xl:text-[18px] text-green mb-1">Overall Total</p>
+                  <p className="font-medium text-[15px] sm:text-[16px] lg:text-[17px] xl:text-[18px] text-red-500">
+                    ₹ {calculateTotalAmount()}
                   </p>
                 </div>
               </div>
@@ -268,7 +273,7 @@ const UserProfile = ({ showUserInfo }) => {
           )}
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 

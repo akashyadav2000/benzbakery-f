@@ -27,6 +27,45 @@ const CartSummary = () => {
   const [number, setNumber] = useState("");
   const [error, setError] = useState("");
 
+  // Add state for error messages
+  const [errorMessages, setErrorMessages] = useState({
+    street: "",
+    landmark: "",
+    pincode: "",
+    number: ""
+  });
+
+  const [submitted, setSubmitted] = useState(false);
+
+  const validateInputs = () => {
+    const updatedErrorMessages = {
+      street:
+        /^[A-Za-z][A-Za-z0-9\s,.'-]*$/.test(street) && street.length <= 50
+          ? ""
+          : "Please enter a valid Street",
+
+      landmark:
+        /^[A-Za-z][A-Za-z0-9\s,.'-]*$/.test(landmark) && landmark.length <= 50
+          ? ""
+          : "Please enter a valid Landmark",
+      pincode:
+        /^\d{6}$/.test(pincode) && pincode.length <= 6
+          ? ""
+          : "Please enter a valid 6-digit pincode",
+      number:
+        /^\d{10}$/.test(number) && number.length <= 10
+          ? ""
+          : "Please enter a valid 10-digit number"
+    };
+
+    const isValid = Object.values(updatedErrorMessages).every(
+      (message) => message === ""
+    );
+
+    setErrorMessages(updatedErrorMessages);
+    return isValid;
+  };
+
   // Fetch all items from categories and match with cartItems
   const finalItems = categories.flatMap((category) => {
     const items = useSelector((state) => state[category]);
@@ -72,21 +111,12 @@ const CartSummary = () => {
 
   const handleProceedToBuy = async () => {
     // Validate address and pincode
-    if (!street.trim() || !landmark.trim() || !pincode.trim() || !number.trim()) {
-      setError("Please enter both address and pincode");
-      return;
-    }
+    setSubmitted(true);
+    const isValid = validateInputs();
 
-    if (!/^\d{6}$/.test(pincode)) {
-      setError("Please enter a valid 6-digit pincode");
+    if (!isValid) {
       return;
     }
-    if (!/^\d{10}$/.test(number)) {
-      setError("Please enter a valid 10-digit Nunber");
-      return;
-    }
-
-    setError(""); // Clear any previous errors
 
 
     try {
@@ -214,73 +244,110 @@ const CartSummary = () => {
         Delivery Details
       </h2>
 
-      <div className="mt-3 space-y-3">
+      <div className="mt-2 space-y-3">
         <div>
-          <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="street" className="block text-[14.5px] lg:text-[15px] xl:text-[15.5px] 2xl:text-[16.5px] font-medium text-gray-800 mb-1">
             Street Name
           </label>
           <input
+            type="text"
             id="street"
             value={street}
+            maxLength={50}
             onChange={(e) => setStreet(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className={`w-full px-3 py-2 h-9 text-[14px] lg:text-[15px] xl:text-[15.5px] 2xl:text-[16px] rounded-md border ${errorMessages.street && submitted
+              ? "border-red-500"
+              : submitted
+                ? "border-green-500"
+                : "border-black"
+              } bg-[whitesmoke] focus:border-green-500 outline-none`}
             placeholder="Enter your street name"
-            required
           />
+          {submitted && errorMessages.street && (
+            <p className="text-red-500 text-[12.2px] sm:text-[12.5px] lg:text-[13px] xl:text-[13.5px] font-medium h-3">
+              {errorMessages.street}
+            </p>
+          )}
         </div>
+
         <div>
-          <label htmlFor="landmark" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="landmark" className="block text-[14.5px] lg:text-[15px] xl:text-[15.5px] 2xl:text-[16.5px] font-medium text-gray-800 mb-1">
             Landmark
           </label>
           <input
             id="landmark"
             value={landmark}
+            maxLength={50}
             onChange={(e) => setLandmark(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className={`w-full px-3 py-2 h-9 rounded-md border ${errorMessages.landmark && submitted
+              ? "border-red-500"
+              : submitted
+                ? "border-green-500"
+                : "border-black"
+              } bg-[whitesmoke] focus:border-green-500 outline-none`}
             placeholder="Enter your landmark"
-            required
           />
+          {submitted && errorMessages.landmark && (
+            <p className="text-red-500 text-[12.2px] sm:text-[12.5px] lg:text-[13px] xl:text-[13.5px] font-medium h-3">
+              {errorMessages.landmark}
+            </p>
+          )}
         </div>
 
         <div>
-          <label htmlFor="pincode" className="block text-sm font-medium text-gray-700 mb-1">
-            Pincode *
+          <label htmlFor="pincode" className="block text-[14.5px] lg:text-[15px] xl:text-[15.5px] 2xl:text-[16.5px] font-medium text-gray-800 mb-1">
+            Pincode
           </label>
           <input
             type="number"
             id="pincode"
             value={pincode}
-            onChange={(e) => setPincode(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Ex. 400078"
             maxLength={6}
-            required
+            onChange={(e) => setPincode(e.target.value)}
+            className={`w-full px-3 py-2 h-9 rounded-md border ${errorMessages.pincode && submitted
+              ? "border-red-500"
+              : submitted
+                ? "border-green-500"
+                : "border-black"
+              } bg-[whitesmoke] focus:border-green-500 outline-none`}
+            placeholder="Ex. 400078"
           />
+          {submitted && errorMessages.pincode && (
+            <p className="text-red-500 text-[12.2px] sm:text-[12.5px] lg:text-[13px] xl:text-[13.5px] font-medium h-3">
+              {errorMessages.pincode}
+            </p>
+          )}
         </div>
+
         <div>
-          <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="number" className="block text-[14.5px] lg:text-[15px] xl:text-[15.5px] 2xl:text-[16.5px] font-medium text-gray-800 mb-1">
             Mobile Number
           </label>
           <input
             type="number"
             id="number"
             value={number}
+            maxLength={10}
             onChange={(e) => setNumber(e.target.value)}
-            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            className={`w-full px-3 py-2 h-9 rounded-md border ${errorMessages.number && submitted
+              ? "border-red-500"
+              : submitted
+                ? "border-green-500"
+                : "border-black"
+              } bg-[whitesmoke] focus:border-green-500 outline-none`}
             placeholder="Enter Mobile Number"
-            maxLength={6}
-            required
           />
+          {submitted && errorMessages.number && (
+            <p className="text-red-500 text-[12.2px] sm:text-[12.5px] lg:text-[13px] xl:text-[13.5px] font-medium h-3">
+              {errorMessages.number}
+            </p>
+          )}
         </div>
-
-        {error && (
-          <div className="text-red-500 text-sm mt-1">{error}</div>
-        )}
       </div>
 
       <button
         onClick={handleProceedToBuy}
-        className="mt-[8px] w-full py-[5px] text-[18px] font-medium text-white bg-gradient-to-r from-pink-400 to-purple-400 rounded-md hover:from-blue-400 hover:to-cyan-400 transition-all"
+        className="mt-5 w-full py-[5px] text-[18px] font-medium text-white bg-gradient-to-r from-pink-400 to-purple-400 rounded-md hover:from-blue-400 hover:to-cyan-400 transition-all"
       >
         Proceed to Buy
       </button>
