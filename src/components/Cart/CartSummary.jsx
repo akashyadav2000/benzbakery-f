@@ -198,19 +198,23 @@ const CartSummary = () => {
           <span className="green-text font-medium text:[15px] lg:text-[16px] xl:text-[17px]">Convenience Fee</span>
           <span className="text-gray-800 font-medium text:[15px] lg:text-[16px] xl:text-[17px]">₹ {CONVENIENCE_FEES}</span>
         </div>
-        <hr className="my-2 border-black" />
+        <hr className="my-[6px] border-black" />
         <div className="flex justify-between">
-          <span className="text-[18px] font-medium greent-text">
+          <span className="text-[17px] font-medium greent-text">
             Total Amount
           </span>
-          <span className="text-[18px] font-medium text-orange-600">
+          <span className="text-[17px] font-medium text-orange-600">
             ₹ {finalPayment}
           </span>
         </div>
       </div>
 
       {/* Add Address and Pincode fields */}
-      <div className="mt-4 space-y-3">
+      <h2 className="text-[17px] lg:text-[18px] xl:text-[19px] 2xl:[20px] font-medium mt-3 text-pink-500">
+        Delivery Details
+      </h2>
+
+      <div className="mt-3 space-y-3">
         <div>
           <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
             Street Name
