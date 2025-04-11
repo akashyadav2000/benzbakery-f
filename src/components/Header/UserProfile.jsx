@@ -104,7 +104,7 @@ const UserProfile = ({ showUserInfo }) => {
                         Delivery
                       </th>
                       <th className="p-4 text-left font-semibold">
-                        Message
+                        Address
                       </th>
                     </tr>
                   </thead>
@@ -130,6 +130,11 @@ const UserProfile = ({ showUserInfo }) => {
                             <p className="text-[15px] font-medium text-pink-500">
                               {extractWeight(purchase.selectedSize)}
                             </p>
+                            <p className="text-[15px] font-medium text-pink-500 max-w-[120px] break-words whitespace-normal ">
+                              {purchase.cakeMessage || (
+                                <span className="text-pink-400">-</span>
+                              )}
+                            </p>
                           </div>
                         </td>
                         <td className="p-2 lg:p-4 font-medium text-[16px]">₹{purchase.price}</td>
@@ -145,15 +150,16 @@ const UserProfile = ({ showUserInfo }) => {
                             <span className="text-[15px] font-medium text-pink-500">
                               {purchase.selectedTimeSlot || "Anytime"}
                             </span>
-                            <span className="text-[15px] font-medium text-pink-500">
-                              {purchase.pincode || "Anytime"}
-                            </span>
+
                           </div>
                         </td>
-                        <td className="p-4 text-pink-600">
-                          {purchase.cakeMessage || (
-                            <span className="text-pink-400">-</span>
-                          )}
+                        <td className="p-4 text-pink-600 max-w-[200px] break-words whitespace-normal text-justify">
+                          <p className="text-[15px] font-medium text-pink-500">
+                            {purchase.pincode || "Anytime"}
+                          </p>
+                          <p className="text-[15px] font-medium text-pink-500">
+                            {purchase.address || "Anytime"}
+                          </p>
                         </td>
                       </tr>
                     ))}

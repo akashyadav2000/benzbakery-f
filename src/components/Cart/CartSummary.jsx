@@ -21,8 +21,10 @@ const CartSummary = () => {
   ];
 
   // Add state for address and pincode
-  const [address, setAddress] = useState("");
+  const [street, setStreet] = useState("");
+  const [landmark, setLandmark] = useState("");
   const [pincode, setPincode] = useState("");
+  const [number, setNumber] = useState("");
   const [error, setError] = useState("");
 
   // Fetch all items from categories and match with cartItems
@@ -70,13 +72,17 @@ const CartSummary = () => {
 
   const handleProceedToBuy = async () => {
     // Validate address and pincode
-    if (!address.trim() || !pincode.trim()) {
+    if (!street.trim() || !landmark.trim() || !pincode.trim() || !number.trim()) {
       setError("Please enter both address and pincode");
       return;
     }
 
     if (!/^\d{6}$/.test(pincode)) {
       setError("Please enter a valid 6-digit pincode");
+      return;
+    }
+    if (!/^\d{10}$/.test(number)) {
+      setError("Please enter a valid 10-digit Nunber");
       return;
     }
 
@@ -125,8 +131,10 @@ const CartSummary = () => {
           selectedDate: cartItem.selectedDate,
           selectedTimeSlot: cartItem.selectedTimeSlot,
           cakeMessage: cartItem.cakeMessage,
-          address, // Add address to each item
+          street, // Add address to each item
+          landmark, // Add address to each item
           pincode, // Add pincode to each item
+          number, // Add address to each item
         };
       });
 
@@ -204,16 +212,28 @@ const CartSummary = () => {
       {/* Add Address and Pincode fields */}
       <div className="mt-4 space-y-3">
         <div>
-          <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-1">
-            Delivery Address *
+          <label htmlFor="street" className="block text-sm font-medium text-gray-700 mb-1">
+            Street Name
           </label>
-          <textarea
-            id="address"
-            rows={3}
-            value={address}
-            onChange={(e) => setAddress(e.target.value)}
+          <input
+            id="street"
+            value={street}
+            onChange={(e) => setStreet(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Enter your complete delivery address"
+            placeholder="Enter your street name"
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="landmark" className="block text-sm font-medium text-gray-700 mb-1">
+            Landmark
+          </label>
+          <input
+            id="landmark"
+            value={landmark}
+            onChange={(e) => setLandmark(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Enter your landmark"
             required
           />
         </div>
@@ -223,12 +243,27 @@ const CartSummary = () => {
             Pincode *
           </label>
           <input
-            type="text"
+            type="number"
             id="pincode"
             value={pincode}
             onChange={(e) => setPincode(e.target.value)}
             className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-            placeholder="Enter 6-digit pincode"
+            placeholder="Ex. 400078"
+            maxLength={6}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="number" className="block text-sm font-medium text-gray-700 mb-1">
+            Mobile Number
+          </label>
+          <input
+            type="number"
+            id="number"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
+            className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+            placeholder="Enter Mobile Number"
             maxLength={6}
             required
           />
