@@ -145,6 +145,9 @@ const UserProfile = ({ showUserInfo }) => {
                             <span className="text-[15px] font-medium text-pink-500">
                               {purchase.selectedTimeSlot || "Anytime"}
                             </span>
+                            <span className="text-[15px] font-medium text-pink-500">
+                              {purchase.pincode || "Anytime"}
+                            </span>
                           </div>
                         </td>
                         <td className="p-4 text-pink-600">
