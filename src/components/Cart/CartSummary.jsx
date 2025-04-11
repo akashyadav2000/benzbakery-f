@@ -303,7 +303,11 @@ const CartSummary = () => {
             id="pincode"
             value={pincode}
             maxLength={6}
-            onChange={(e) => setPincode(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.length <= 6) {  // For pincode (6 digits)
+                setPincode(e.target.value);
+              }
+            }}
             className={`w-full px-3 py-2 h-9 rounded-md border ${errorMessages.pincode && submitted
               ? "border-red-500"
               : submitted
@@ -328,7 +332,11 @@ const CartSummary = () => {
             id="number"
             value={number}
             maxLength={10}
-            onChange={(e) => setNumber(e.target.value)}
+            onChange={(e) => {
+              if (e.target.value.length <= 10) {  // For mobile (10 digits)
+                setNumber(e.target.value);
+              }
+            }}
             className={`w-full px-3 py-2 h-9 rounded-md border ${errorMessages.number && submitted
               ? "border-red-500"
               : submitted
