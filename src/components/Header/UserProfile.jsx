@@ -49,8 +49,8 @@ const UserProfile = ({ showUserInfo }) => {
               <span className="text-[22px] sm:text-2xl">👤</span>
             </div>
             <div className="ml-4">
-              <h2 className="text-[19px] sm:text-xl font-semibold green-text">{user?.name}</h2>
-              <p className="text-red-700 text-[17px] font-medium">{user?.email}</p>
+              <h2 className="text-[18px] sm:text-xl font-semibold green-text break-all">{user?.name}</h2>
+              <p className="text-red-700 text-[16px] sm:text-[17px] font-medium break-all">{user?.email}</p>
             </div>
           </div>
           <button
