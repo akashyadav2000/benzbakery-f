@@ -198,7 +198,10 @@ export default function Login() {
               disabled={isLoading} // Disable the button when loading
             >
               {isLoading ? (
-                <Loader2 className="animate-spin w-[24px] h-[24px]" /> // Loading spinner
+                <>
+                  <Loader2 className="animate-spin w-5 h-5 mr-2" />
+                  Log In...
+                </>
               ) : (
                 "Log In"
               )}

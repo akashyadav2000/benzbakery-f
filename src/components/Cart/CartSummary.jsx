@@ -25,7 +25,7 @@ const CartSummary = () => {
   const [landmark, setLandmark] = useState("");
   const [pincode, setPincode] = useState("");
   const [number, setNumber] = useState("");
-  const [error, setError] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
 
   // Add state for error messages
   const [errorMessages, setErrorMessages] = useState({
@@ -118,6 +118,8 @@ const CartSummary = () => {
       return;
     }
 
+    setIsProcessing(true); // Start loading
+
 
     try {
       const { data: order } = await axios.post(
@@ -190,6 +192,8 @@ const CartSummary = () => {
         handler: function (response) {
           console.log("Payment successful:", response);
 
+          setIsProcessing(false); // Stop loading on success
+
           // Clear the cart after successful payment
           dispatch(cartActions.clearCart());
 
@@ -209,6 +213,7 @@ const CartSummary = () => {
       const razorpay = new window.Razorpay(options);
       razorpay.open();
     } catch (error) {
+      setIsProcessing(false); // Stop loading on error
       console.error("Error while initiating payment:", error);
     }
   };
@@ -352,12 +357,29 @@ const CartSummary = () => {
           )}
         </div>
       </div>
-
       <button
         onClick={handleProceedToBuy}
-        className="mt-5 w-full py-[5px] text-[18px] font-medium text-white bg-gradient-to-r from-pink-400 to-purple-400 rounded-md hover:from-blue-400 hover:to-cyan-400 transition-all"
+        disabled={cartItems.length === 0 || isProcessing}
+        className={`
+    mt-5 w-full py-[5px] text-[18px] font-medium text-white rounded-md transition-all
+    flex items-center justify-center gap-2
+    ${cartItems.length === 0 || isProcessing
+            ? 'bg-gray-400 cursor-not-allowed opacity-80'
+            : 'bg-gradient-to-r from-pink-400 to-purple-400 hover:from-blue-400 hover:to-cyan-400 cursor-pointer'
+          }
+  `}
       >
-        Proceed to Buy
+        {isProcessing ? (
+          <>
+            <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Processing...
+          </>
+        ) : (
+          'Proceed to Buy'
+        )}
       </button>
     </div>
   );

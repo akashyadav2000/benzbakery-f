@@ -18,6 +18,13 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Hide arrows in number input */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
 #root {
   margin: 0;
   padding: 0;
