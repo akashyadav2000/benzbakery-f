@@ -1,13 +1,13 @@
 import { ChevronRight } from "lucide-react";
 import React from "react";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+// import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Link as ScrollLink } from "react-scroll";
 
 function LandingPage() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center text-center overflow-hidden poppins">
       {/* Background Image */}
-      <LazyLoadImage
+      <img
         src="/Home-Background.jpg"
         alt="Background"
         className="absolute pt-[50px] sm:pt-14 inset-0 w-full h-full object-cover"
