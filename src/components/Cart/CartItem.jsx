@@ -1,15 +1,11 @@
 import React from "react";
 import { Minus, Plus, Trash2 } from "lucide-react";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-import { cartActions, saveCartToServer } from "../Store/cartSlice";
+import { cartActions } from "../Store/cartSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function CartItem({ item, cartItemDetails }) {
   const dispatch = useDispatch();
-
-  const { isAuthenticated, user } = useSelector(state => state.auth);
-  const cartItems = useSelector(state => state.cart);
 
   // Calculate the price based on the selected size
   const selectedPrice =
@@ -24,18 +20,8 @@ function CartItem({ item, cartItemDetails }) {
         selectedDate: cartItemDetails.selectedDate,
         selectedTimeSlot: cartItemDetails.selectedTimeSlot,
         cakeMessage: cartItemDetails.cakeMessage,
-      }));
-
-    if (isAuthenticated) {
-      const updatedCart = cartItems.filter(cartItem =>
-        !(cartItem.id === item.id &&
-          cartItem.selectedSize === cartItemDetails.selectedSize &&
-          cartItem.selectedDate === cartItemDetails.selectedDate &&
-          cartItem.selectedTimeSlot === cartItemDetails.selectedTimeSlot &&
-          cartItem.cakeMessage === cartItemDetails.cakeMessage)
-      );
-      dispatch(saveCartToServer(user.email, updatedCart));
-    }
+      })
+    );
   };
 
   const handleIncrement = () => {
@@ -48,20 +34,8 @@ function CartItem({ item, cartItemDetails }) {
           selectedTimeSlot: cartItemDetails.selectedTimeSlot,
           cakeMessage: cartItemDetails.cakeMessage,
           flavor: cartItemDetails.flavor,
-        }));
-
-      if (isAuthenticated) {
-        const updatedCart = cartItems.map(cartItem =>
-          cartItem.id === item.id &&
-            cartItem.selectedSize === cartItemDetails.selectedSize &&
-            cartItem.selectedDate === cartItemDetails.selectedDate &&
-            cartItem.selectedTimeSlot === cartItemDetails.selectedTimeSlot &&
-            cartItem.cakeMessage === cartItemDetails.cakeMessage
-            ? { ...cartItem, quantity: cartItem.quantity + 1 }
-            : cartItem
-        );
-        dispatch(saveCartToServer(user.email, updatedCart));
-      }
+        })
+      );
     }
   };
 
@@ -73,20 +47,8 @@ function CartItem({ item, cartItemDetails }) {
         selectedDate: cartItemDetails.selectedDate,
         selectedTimeSlot: cartItemDetails.selectedTimeSlot,
         cakeMessage: cartItemDetails.cakeMessage,
-      }));
-
-    if (isAuthenticated) {
-      const updatedCart = cartItems.map(cartItem =>
-        cartItem.id === item.id &&
-          cartItem.selectedSize === cartItemDetails.selectedSize &&
-          cartItem.selectedDate === cartItemDetails.selectedDate &&
-          cartItem.selectedTimeSlot === cartItemDetails.selectedTimeSlot &&
-          cartItem.cakeMessage === cartItemDetails.cakeMessage
-          ? { ...cartItem, quantity: cartItem.quantity - 1 }
-          : cartItem
-      ).filter(cartItem => cartItem.quantity > 0);
-      dispatch(saveCartToServer(user.email, updatedCart));
-    }
+      })
+    );
   };
 
   return (

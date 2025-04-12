@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, IndianRupee } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions, saveCartToServer } from "../Store/cartSlice";
+import { cartActions } from "../Store/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { selectIsAuthenticated, selectUser } from "../Store/authSlice";
+import { selectIsAuthenticated } from "../Store/authSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function ProductDetails({ item }) {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
-  const user = useSelector(selectUser); // Get user data
-  const cartItems = useSelector(state => state.cart); // Get current cart items
   const navigate = useNavigate();
 
   const sizes = Object.keys(item.priceOptions);
@@ -42,18 +40,16 @@ function ProductDetails({ item }) {
     setIsFormValid(true); // Hide error message
 
     if (isAuthenticated) {
-      const newItem = {
-        id: item.id,
-        selectedSize,
-        selectedDate,
-        selectedTimeSlot,
-        cakeMessage,
-        flavor: item.flavor,
-        quantity: 1
-      };
-
-      dispatch(cartActions.addToCart(newItem));
-      dispatch(saveCartToServer(user.email, [...cartItems, newItem]));
+      dispatch(
+        cartActions.addToCart({
+          id: item.id,
+          selectedSize, // Pass the selected size
+          selectedDate, // Pass the selected date
+          selectedTimeSlot, // Pass the selected time slot
+          cakeMessage, // Pass the cake message
+          flavor: item.flavor,
+        })
+      );
       navigate("/Cart");
     } else {
       navigate("/Login");
