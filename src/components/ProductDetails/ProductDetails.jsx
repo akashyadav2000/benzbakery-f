@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { ChevronRight, IndianRupee } from "lucide-react";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "../Store/cartSlice";
+import { cartActions, saveCartToServer } from "../Store/cartSlice";
 import { Link, useNavigate } from "react-router-dom";
-import { selectIsAuthenticated } from "../Store/authSlice";
+import { selectIsAuthenticated, selectUser } from "../Store/authSlice";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function ProductDetails({ item }) {
   const dispatch = useDispatch();
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectUser); // Get user data
+  const cartItems = useSelector(state => state.cart); // Get current cart items
   const navigate = useNavigate();
 
   const sizes = Object.keys(item.priceOptions);
