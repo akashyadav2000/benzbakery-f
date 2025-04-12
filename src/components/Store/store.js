@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import cakeItemsSlice from "./cakeItemsSlice";
-import pastryItemsSlice from "./pastryItemsSlice";
+import pastryItemsSlice from "./pastryItemsSlice ";
 import cupCakeItemsSlice from "./cupCakeItemsSlice";
 import weddingCakeItemsSlice from "./weddingCakeItemsSlice";
 import cartSlice from "./cartSlice";
