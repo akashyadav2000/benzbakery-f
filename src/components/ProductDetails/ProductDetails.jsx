@@ -40,16 +40,18 @@ function ProductDetails({ item }) {
     setIsFormValid(true); // Hide error message
 
     if (isAuthenticated) {
-      dispatch(
-        cartActions.addToCart({
-          id: item.id,
-          selectedSize, // Pass the selected size
-          selectedDate, // Pass the selected date
-          selectedTimeSlot, // Pass the selected time slot
-          cakeMessage, // Pass the cake message
-          flavor: item.flavor,
-        })
-      );
+      const newItem = {
+        id: item.id,
+        selectedSize,
+        selectedDate,
+        selectedTimeSlot,
+        cakeMessage,
+        flavor: item.flavor,
+        quantity: 1
+      };
+
+      dispatch(cartActions.addToCart(newItem));
+      dispatch(saveCartToServer(user.email, [...cartItems, newItem]));
       navigate("/Cart");
     } else {
       navigate("/Login");

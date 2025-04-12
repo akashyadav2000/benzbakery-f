@@ -6,7 +6,6 @@ import { cartActions } from "../Store/cartSlice";
 import { addPurchase } from "../Store/authSlice";
 import { useNavigate } from "react-router-dom";
 
-
 const CartSummary = () => {
   const cartItems = useSelector((state) => state.cart);
   const user = useSelector(selectUser);
@@ -196,6 +195,11 @@ const CartSummary = () => {
 
           // Clear the cart after successful payment
           dispatch(cartActions.clearCart());
+
+          // Save empty cart to server
+          if (user?.email) {
+            dispatch(saveCartToServer(user.email, []));
+          }
 
           // Navigate to UserProfile
           navigate("/UserProfile");

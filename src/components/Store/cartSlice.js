@@ -65,8 +65,34 @@ const cartSlice = createSlice({
     clearCart: (state) => {
       state.length = 0; // Clears the cart
     },
+    setCart: (state, action) => {
+      return action.payload;
+    }
   },
 });
+
+// Thunks for cart persistence
+export const saveCartToServer = (email, cartItems) => async () => {
+  try {
+    await axios.post("https://benz-1vam.onrender.com/save-cart", {
+      email,
+      cartItems
+    });
+  } catch (error) {
+    console.error("Error saving cart:", error);
+  }
+};
+
+export const loadCartFromServer = (email) => async (dispatch) => {
+  try {
+    const response = await axios.get(`https://benz-1vam.onrender.com/get-cart/${email}`);
+    if (response.data.status === "Success") {
+      dispatch(cartSlice.actions.setCart(response.data.cart));
+    }
+  } catch (error) {
+    console.error("Error loading cart:", error);
+  }
+};
 
 export const cartActions = cartSlice.actions;
 export default cartSlice;
