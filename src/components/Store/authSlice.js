@@ -14,12 +14,13 @@ const authSlice = createSlice({
     login(state, action) {
       state.isAuthenticated = true;
       state.user = action.payload.user;
-      state.purchaseHistory = action.payload.purchaseHistory || []; // Initialize with fetched history
+      state.purchaseHistory = action.payload.purchaseHistory || [];
     },
     logout(state) {
       state.isAuthenticated = false;
       state.user = null;
       state.purchaseHistory = [];
+      localStorage.removeItem('reduxState'); // Clear persisted state on logout
     },
     addPurchase(state, action) {
       action.payload.forEach((newPurchase) => {
@@ -40,15 +41,12 @@ const authSlice = createSlice({
       });
     },
     setPurchaseHistory(state, action) {
-      state.purchaseHistory = action.payload; // Set purchase history from backend
+      state.purchaseHistory = action.payload;
     },
   },
 });
 
 export const { login, logout, addPurchase, setPurchaseHistory } = authSlice.actions;
-export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
-export const selectUser = (state) => state.auth.user;
-export const selectPurchaseHistory = (state) => state.auth.purchaseHistory;
 
 // Thunk to fetch purchase history
 export const fetchPurchaseHistory = (email) => async (dispatch) => {
@@ -62,6 +60,8 @@ export const fetchPurchaseHistory = (email) => async (dispatch) => {
   }
 };
 
-
+export const selectIsAuthenticated = (state) => state.auth.isAuthenticated;
+export const selectUser = (state) => state.auth.user;
+export const selectPurchaseHistory = (state) => state.auth.purchaseHistory;
 
 export default authSlice.reducer;
