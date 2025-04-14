@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./components/Store/store.js";
+import { ErrorBoundary } from "react-error-boundary";
 import "./index.css";
 import "./App.css";
 
@@ -52,12 +53,29 @@ const router = createBrowserRouter(
   )
 );
 
+function ErrorFallback({ error, resetErrorBoundary }) {
+  return (
+    <div className="p-4 text-center">
+      <h2>Something went wrong</h2>
+      <p className="text-red-500">{error.message}</p>
+      <button
+        onClick={resetErrorBoundary}
+        className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+      >
+        Try Again
+      </button>
+    </div>
+  );
+}
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Suspense fallback={<></>}>
-      <Provider store={store}>
-        <RouterProvider router={router} />
-      </Provider>
-    </Suspense>
+    <ErrorBoundary FallbackComponent={ErrorFallback}>
+      <Suspense fallback={<div className="loading-spinner">Loading...</div>}>
+        <Provider store={store}>
+          <RouterProvider router={router} />
+        </Provider>
+      </Suspense>
+    </ErrorBoundary>
   </React.StrictMode>
 );
