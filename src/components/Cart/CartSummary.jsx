@@ -37,7 +37,29 @@ const CartSummary = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const validateInputs = () => {
+  const validateMumbaiPincode = async (pincode) => {
+    try {
+      const response = await axios.get(`https://api.postalpincode.in/pincode/${pincode}`);
+
+      if (response.data[0].Status === "Success") {
+        const postOffices = response.data[0].PostOffice;
+        // Check if any of the post offices are in Mumbai
+        return postOffices.some(office =>
+          office.District.toLowerCase().includes("mumbai") ||
+          office.State.toLowerCase().includes("maharashtra")
+        );
+      }
+      return false;
+    } catch (error) {
+      console.error("Error validating pincode:", error);
+      return false;
+    }
+  };
+
+  const validateInputs = async () => {
+
+    const isMumbaiPincode = await validateMumbaiPincode(pincode);
+
     const updatedErrorMessages = {
       street:
         /^[A-Za-z][A-Za-z0-9\s,.'-]*$/.test(street) && street.length <= 50
@@ -49,8 +71,10 @@ const CartSummary = () => {
           ? ""
           : "Please enter a valid Landmark",
       pincode:
-        /^\d{6}$/.test(pincode) && pincode.length <= 6
-          ? ""
+        /^\d{6}$/.test(pincode)
+          ? isMumbaiPincode
+            ? ""
+            : "We currently only deliver in Mumbai"
           : "Please enter a valid 6-digit pincode",
       number:
         /^\d{10}$/.test(number) && number.length <= 10
