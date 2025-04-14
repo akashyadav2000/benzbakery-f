@@ -238,9 +238,12 @@ const Header = () => {
               ) : (
                 <Link
                   to={item.path}
-                  onClick={() => setMenuOpen(false)}
+                  onClick={() => {
+                    setMenuOpen(false);
+                    setActiveSection(null); // Clear active section when clicking a link
+                  }}
                   className={`flex items-center gap-1 px-2 py-1 rounded-md transition-all duration-300 
-                    ${location.pathname === item.path && !isLoginOrCartPage ? "bg-[#02302029] green-text" : "green-text"} hover:bg-[#02302029] hover:green-text`}
+                    ${location.pathname === item.path ? "bg-[#02302029] green-text" : "green-text"} hover:bg-[#02302029] hover:green-text`}
                 >
                   {item.icon}
                   <span className="text-base pl-1">{item.label}</span>
