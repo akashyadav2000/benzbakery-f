@@ -221,6 +221,13 @@ const CartSummary = () => {
           // Navigate to UserProfile
           navigate("/UserProfile");
         },
+        modal: {
+          ondismiss: function () {
+            // This runs when user closes the payment modal
+            setIsProcessing(false);
+            console.log("Payment modal closed by user");
+          }
+        },
         prefill: {
           name: user?.name || "Guest",
           email: user?.email || "guest@example.com",
@@ -231,11 +238,23 @@ const CartSummary = () => {
       };
 
       // Open Razorpay payment window
+
       const razorpay = new window.Razorpay(options);
+
+      razorpay.on('payment.failed', function (response) {
+        setIsProcessing(false);
+        console.error("Payment failed:", response.error);
+        // Optional: Show error message to user
+        alert(`Payment failed: ${response.error.description}`);
+      });
+
       razorpay.open();
+
     } catch (error) {
-      setIsProcessing(false); // Stop loading on error
+      setIsProcessing(false);
       console.error("Error while initiating payment:", error);
+      // Optional: Show error message to user
+      alert("Error initiating payment. Please try again.");
     }
   };
 
