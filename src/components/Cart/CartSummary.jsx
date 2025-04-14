@@ -91,12 +91,16 @@ const CartSummary = () => {
   };
 
   // Fetch all items from categories and match with cartItems
-  const finalItems = categories.flatMap((category) => {
-    const items = useSelector((state) => state[category]);
-    return items.filter((item) =>
-      cartItems.some((cartItem) => cartItem.id === item.id)
-    );
-  });
+  // const finalItems = categories.flatMap((category) => {
+  //   const items = useSelector((state) => state[category]);
+  //   return items.filter((item) =>
+  //     cartItems.some((cartItem) => cartItem.id === item.id)
+  //   );
+  // });
+
+  const finalItems = allItems.filter((item) =>
+    cartItems.some((cartItem) => cartItem.id === item.id)
+  );
 
   // Calculate the total value of all items in the cart
   const totalValue = cartItems.reduce((accumulator, cartItem) => {
