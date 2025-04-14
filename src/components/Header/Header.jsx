@@ -101,6 +101,7 @@ const Header = () => {
   const handleLoginClick = (e) => {
     e.preventDefault();
     setMenuOpen(false);
+    setActiveSection(null); // Clear active section when navigating
     navigate(isAuthenticated ? "/UserProfile" : "/Login"); // Profile if logged in, else login
   };
 
@@ -115,7 +116,13 @@ const Header = () => {
     { id: "feedback", path: "/Feedback", label: "Feedback", icon: <ThumbsUp size={17} />, type: "link" },
   ];
 
-  const isLoginOrCartPage = ["/Login", "/Cart"].includes(location.pathname); // Check current page
+  // Update the pages that should clear active section
+  useEffect(() => {
+    const noScrollPages = ["/About", "/Feedback", "/Cart", "/Login", "/UserProfile"];
+    if (noScrollPages.includes(location.pathname)) {
+      setActiveSection(null); // Clear active section
+    }
+  }, [location.pathname]);
 
   // The UI part of the component
   return (
@@ -161,9 +168,12 @@ const Header = () => {
                 ) : (
                   <Link
                     to={item.path}
-                    onClick={() => setMenuOpen(false)}
+                    onClick={() => {
+                      setMenuOpen(false);
+                      setActiveSection(null); // Clear active section when clicking a link
+                    }}
                     className={`flex items-center gap-1 px-2 py-1 rounded-t-sm transition-all duration-300 
-                      ${location.pathname === item.path && !isLoginOrCartPage ? "bg-[#2aff5126] green-text" : "green-text"} hover:bg-[#2aff5126] hover:green-text`}
+                      ${location.pathname === item.path ? "bg-[#2aff5126] green-text" : "green-text"} hover:bg-[#2aff5126] hover:green-text`}
                   >
                     {item.icon}
                     <span className="text-base pl-1">{item.label}</span>
@@ -172,7 +182,7 @@ const Header = () => {
                 {/* Highlight bar under active item */}
                 <div
                   className={`h-[2px] w-full bg-green-600 rounded-full transition-all duration-300 ${(item.type === "scroll" && activeSection === item.id) ||
-                    (item.type === "link" && location.pathname === item.path && !isLoginOrCartPage)
+                    (item.type === "link" && location.pathname === item.path)
                     ? "opacity-100"
                     : "opacity-0"
                     } max-[1100px]:hidden`}

@@ -10,7 +10,7 @@ function Home() {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.scrollTo) {
+    if (location.pathname === "/" && location.state?.scrollTo) {
       setTimeout(() => {
         const sectionElement = document.getElementById(location.state.scrollTo);
         if (sectionElement) {
@@ -29,7 +29,7 @@ function Home() {
       // Scroll to the top if no section is specified
       window.scrollTo(0, 0);
     }
-  }, [location.state]);
+  }, [location.state, location.pathname]);
 
   return (
     <>
