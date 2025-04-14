@@ -91,16 +91,12 @@ const CartSummary = () => {
   };
 
   // Fetch all items from categories and match with cartItems
-  // const finalItems = categories.flatMap((category) => {
-  //   const items = useSelector((state) => state[category]);
-  //   return items.filter((item) =>
-  //     cartItems.some((cartItem) => cartItem.id === item.id)
-  //   );
-  // });
-
-  const finalItems = categories.filter((item) =>
-    cartItems.some((cartItem) => cartItem.id === item.id)
-  );
+  const finalItems = categories.flatMap((category) => {
+    const items = useSelector((state) => state[category]);
+    return items.filter((item) =>
+      cartItems.some((cartItem) => cartItem.id === item.id)
+    );
+  });
 
   // Calculate the total value of all items in the cart
   const totalValue = cartItems.reduce((accumulator, cartItem) => {
@@ -140,14 +136,13 @@ const CartSummary = () => {
   const handleProceedToBuy = async () => {
     // Validate address and pincode
     setSubmitted(true);
-    const isValid = validateInputs();
+    const isValid = await validateInputs(); // Make sure to await the validation
 
     if (!isValid) {
-      return;
+      return; // Exit if validation fails
     }
 
-    setIsProcessing(true); // Start loading
-
+    setIsProcessing(true); // Start loading only after validation passes
 
     try {
       const { data: order } = await axios.post(
@@ -197,8 +192,6 @@ const CartSummary = () => {
           number, // Add address to each item
         };
       });
-
-
 
       // Debug: Log the prepared purchase data
       console.log("Purchase Data:", purchaseData);
