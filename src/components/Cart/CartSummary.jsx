@@ -98,7 +98,7 @@ const CartSummary = () => {
   //   );
   // });
 
-  const finalItems = allItems.filter((item) =>
+  const finalItems = categories.filter((item) =>
     cartItems.some((cartItem) => cartItem.id === item.id)
   );
 
