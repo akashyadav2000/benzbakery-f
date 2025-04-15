@@ -9,34 +9,42 @@ import {
 import { Provider } from "react-redux";
 import store from "./components/Store/store.js";
 import { ErrorBoundary } from "react-error-boundary";
+import { retryImport } from "./retryImport.js";
 import "./index.css";
 import "./App.css";
 
-const Layout = lazy(() => import("./Layout.jsx"));
-const Home = lazy(() => import("./components/Home/Home"));
-const CakeContainer = lazy(() => import("./components/Cake/CakeContainer.jsx"));
+import { retryImport } from "./retryImport.js";
+
+const Layout = lazy(() => retryImport(() => import("./Layout.jsx")));
+const Home = lazy(() => retryImport(() => import("./components/Home/Home")));
+const CakeContainer = lazy(() =>
+  retryImport(() => import("./components/Cake/CakeContainer.jsx"))
+);
 const PastryContainer = lazy(() =>
-  import("./components/Pastry/PastryContainer.jsx")
+  retryImport(() => import("./components/Pastry/PastryContainer.jsx"))
 );
 const CupCakeContainer = lazy(() =>
-  import("./components/CupCake/CupCakeContainer.jsx")
+  retryImport(() => import("./components/CupCake/CupCakeContainer.jsx"))
 );
 const WeddingCakeContainer = lazy(() =>
-  import("./components/WeddingCake/WeddingCakeContainer.jsx")
+  retryImport(() => import("./components/WeddingCake/WeddingCakeContainer.jsx"))
 );
 const ProductDetailsContainer = lazy(() =>
-  import("./components/ProductDetails/ProductDetailsContainer.jsx")
+  retryImport(() => import("./components/ProductDetails/ProductDetailsContainer.jsx"))
 );
-const About = lazy(() => import("./components/About/About.jsx"));
-const Feedback = lazy(() => import("./components/Feedback/Feedback.jsx"));
-const Cart = lazy(() => import("./components/Cart/Cart.jsx"));
-const Login = lazy(() => import("./components/Login/Login.jsx"));
-const Signup = lazy(() => import("./components/Signup/Signup.jsx"));
-const UserProfile = lazy(() => import("./components/Header/UserProfile.jsx"));
+const About = lazy(() => retryImport(() => import("./components/About/About.jsx")));
+const Feedback = lazy(() => retryImport(() => import("./components/Feedback/Feedback.jsx")));
+const Cart = lazy(() => retryImport(() => import("./components/Cart/Cart.jsx")));
+const Login = lazy(() => retryImport(() => import("./components/Login/Login.jsx")));
+const Signup = lazy(() => retryImport(() => import("./components/Signup/Signup.jsx")));
+const UserProfile = lazy(() =>
+  retryImport(() => import("./components/Header/UserProfile.jsx"))
+);
+
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<Layout />}>
+    <Route path="/" element={<Layout />} errorElement={<ErrorFallback />}>
       <Route index element={<Home />} />
       <Route path="Cake" element={<CakeContainer />} />
       <Route path="Pastry" element={<PastryContainer />} />
