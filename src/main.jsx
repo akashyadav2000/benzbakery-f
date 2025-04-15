@@ -13,8 +13,6 @@ import { retryImport } from "./retryImport.js";
 import "./index.css";
 import "./App.css";
 
-import { retryImport } from "./retryImport.js";
-
 const Layout = lazy(() => retryImport(() => import("./Layout.jsx")));
 const Home = lazy(() => retryImport(() => import("./components/Home/Home")));
 const CakeContainer = lazy(() =>
