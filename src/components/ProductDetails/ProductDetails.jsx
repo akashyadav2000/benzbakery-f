@@ -174,10 +174,10 @@ function ProductDetails({ item }) {
                     required
                   >
                     <option value="">Select Time Slot</option>
-                    <option value="9 AM - 12 PM">9:00 AM - 12:00 PM</option>
-                    <option value="12 PM - 3 PM">12:00 PM - 3:00 PM</option>
-                    <option value="3 PM - 6 PM">3:00PM - 6:00 PM</option>
-                    <option value="6 PM - 9 PM">6:00 PM - 9:00 PM</option>
+                    <option value="09 AM - 12 PM">09:00 AM - 12:00 PM</option>
+                    <option value="12 PM - 03 PM">12:00 PM - 3:00 PM</option>
+                    <option value="03 PM - 06 PM">03:00 PM - 06:00 PM</option>
+                    <option value="06 PM - 09 PM">06:00 PM - 09:00 PM</option>
                   </select>
                   {/* Error Message for Time Slot */}
                   {!isFormValid && !selectedTimeSlot && (
@@ -209,10 +209,10 @@ function ProductDetails({ item }) {
                       required
                     >
                       <option value="">Select Time Slot</option>
-                      <option value="9 AM - 12 PM">9:00 AM - 12:00 PM</option>
-                      <option value="12 PM - 3 PM">12:00 PM - 3:00 PM</option>
-                      <option value="3 PM - 6 PM">3:00 PM - 6:00 PM</option>
-                      <option value="6 PM - 9 PM">6:00 PM - 9:00 PM</option>
+                      <option value="09 AM - 12 PM">09:00 AM - 12:00 PM</option>
+                      <option value="12 PM - 03 PM">12:00 PM - 03:00 PM</option>
+                      <option value="03 PM - 06 PM">03:00 PM - 06:00 PM</option>
+                      <option value="06 PM - 09 PM">06:00 PM - 09:00 PM</option>
                     </select>
                     {/* Error Message for Time Slot */}
                     {!isFormValid && !selectedTimeSlot && (
