@@ -10,7 +10,7 @@ function LandingPage() {
       <picture>
         <source srcSet="/Home-Background.webp" type="image/webp" />
         <img
-          src="/Home-Background.webp" // fallback if browser doesn't support WebP
+          src="/Home-Background.jpg" // fallback if browser doesn't support WebP
           alt="Background"
           loading="eager"
           decoding="async"
