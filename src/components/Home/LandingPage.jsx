@@ -7,11 +7,17 @@ function LandingPage() {
   return (
     <section className="relative w-full min-h-screen flex items-center justify-center text-center overflow-hidden poppins">
       {/* Background Image */}
-      <img
-        src="/Home-Background.webp"
-        alt="Background"
-        className="absolute pt-[50px] sm:pt-14 inset-0 w-full h-full object-cover"
-      />
+      <picture>
+        <source srcSet="/Home-Background.webp" type="image/webp" />
+        <img
+          src="/Home-Background.jpg" // fallback if browser doesn't support WebP
+          alt="Background"
+          loading="eager"
+          decoding="async"
+          className="absolute pt-[50px] sm:pt-14 inset-0 w-full h-full object-cover"
+        />
+      </picture>
+
 
       {/* Content */}
       <div className="relative z-10 mt-6 text-white text-center w-xl sm:w-xl md:w-2xl lg:w-3xl xl:w-4xl max-[450px]:px-3 px-6 lg:px-10">
