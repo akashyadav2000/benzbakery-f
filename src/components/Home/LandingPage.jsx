@@ -8,7 +8,7 @@ function LandingPage() {
     <section className="relative w-full min-h-screen flex items-center justify-center text-center overflow-hidden poppins">
       {/* Background Image */}
       <img
-        src="/Home-Background.jpg"
+        src="/Home-Background.webp"
         alt="Background"
         className="absolute pt-[50px] sm:pt-14 inset-0 w-full h-full object-cover"
       />

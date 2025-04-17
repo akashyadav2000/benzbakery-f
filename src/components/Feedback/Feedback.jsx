@@ -155,7 +155,7 @@ function Feedback() {
             {feedbackMessage.includes("submitted") && (
               <div className="fixed inset-0 z-40 max-[450px]:pt-[50px] pt-14 backdrop-blur-sm flex items-center justify-center">
                 <div className="bg-white max-[450px]:w-[17rem] w-[21rem] xl:w-[22rem] 2xl:w-[24rem] rounded-lg shadow-lg p-[16px] xl:p-[20px] 2xl:p-[22px] text-center">
-                  <img src="./tick.png" alt="tick" className="max-[450px]:w-13 w-15 xl:w-16 2xl:w-17 max-[450px]:-mt-[45px] -mt-[52px] mx-auto rounded-full shadow-md" />
+                  <img src="./tick.webp" alt="tick" className="max-[450px]:w-13 w-15 xl:w-16 2xl:w-17 max-[450px]:-mt-[45px] -mt-[52px] mx-auto rounded-full shadow-md" />
                   <h2 className="max-[450px]:text-[18px] text-[20px] xl:text-[22px] 2xl:text-[24px] font-medium max-[450px]:mt-[8px] mt-[9px] xl:mt-[10px] 2xl:mt-[11px]">Thank You</h2>
                   <p className="max-[450px]:text-[15px] text-[16.5px] xl:text-[17.5px] 2xl:text-[19px] font-medium max-[450px]:mt-[3px] mt-[5px] xl:mt-[6px] 2xl:mt-[8px] leading-snug items-j">{feedbackMessage}</p>
                   <button
@@ -172,7 +172,7 @@ function Feedback() {
       </form>
 
       <div className="hidden md:block">
-        <img src="./flower.jpg" alt="feedback-img" className="h-[26rem] lg:h-[26rem] xl:h-[30rem] 2xl:h-[31rem] rounded-md" />
+        <img src="./flower.webp" alt="feedback-img" className="h-[26rem] lg:h-[26rem] xl:h-[30rem] 2xl:h-[31rem] rounded-md" />
       </div>
     </div>
   );

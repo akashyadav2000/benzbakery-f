@@ -1,7 +1,7 @@
 export const WEDDING_CAKE_ITEMS = [
   {
     id: "031",
-    image: "./Something_Blue.jpg",
+    image: "./Something_Blue.webp",
     alt_Name: "Icing_Orange_Wedding_Cake",
     item: "Icing Orange",
     cakeD:
@@ -18,7 +18,7 @@ export const WEDDING_CAKE_ITEMS = [
   },
   {
     id: "032",
-    image: "./Vintage_Rose.jpg",
+    image: "./Vintage_Rose.webp",
     alt_Name: "Vintage_Rose_Wedding_Cake",
     item: "Vintage Rose",
     cakeD:
@@ -35,7 +35,7 @@ export const WEDDING_CAKE_ITEMS = [
   },
   {
     id: "033",
-    image: "./Tower_Of_Joy.jpg",
+    image: "./Tower_Of_Joy.webp",
     alt_Name: "Tower_Of_Joy_Wedding_Cake",
     item: "Tower Of Joy",
     cakeD:
@@ -52,7 +52,7 @@ export const WEDDING_CAKE_ITEMS = [
   },
   {
     id: "034",
-    image: "./Colourful_Sugar_Flowers.jpg",
+    image: "./Colourful_Sugar_Flowers.webp",
     alt_Name: "Colourful_Sugar_Flowers_Wedding_Cake",
     item: "Colourful Flowers",
     cakeD:

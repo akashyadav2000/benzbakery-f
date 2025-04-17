@@ -1,7 +1,7 @@
 export const CAKE_ITEMS = [
   {
     id: "001",
-    image: "./Sprinkles_Drip.jpg",
+    image: "./Sprinkles_Drip.webp",
     alt_Name: "Sprinkles Drip Cake",
     item: "Sprinkles Drip",
     cakeD:
@@ -18,7 +18,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "002",
-    image: "./Red_Velvet_Cake.jpg",
+    image: "./Red_Velvet_Cake.webp",
     alt_Name: "Red Velvet Cake",
     item: "Red Velvet Cake",
     cakeD:
@@ -35,7 +35,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "003",
-    image: "./Rainbow_Cake.jpg",
+    image: "./Rainbow_Cake.webp",
     alt_Name: "Rainbow Cake",
     item: "Rainbow Cake",
     cakeD:
@@ -52,7 +52,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "004",
-    image: "./Crunchy_Chocolate.jpg",
+    image: "./Crunchy_Chocolate.webp",
     alt_Name: "Crunchy Chocolate Cake",
     item: "Crunchy Chocolate",
     cakeD:
@@ -69,7 +69,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "005",
-    image: "./Blackberry_forrest.jpg",
+    image: "./Blackberry_forrest.webp",
     alt_Name: "Blackberry Forest Cake",
     item: "Blackberry Forest",
     cakeD:
@@ -86,7 +86,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "006",
-    image: "./Overload_Fruit.jpg",
+    image: "./Overload_Fruit.webp",
     alt_Name: "Overload Fruit Cake",
     item: "Overload Fruit",
     cakeD:
@@ -103,7 +103,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "007",
-    image: "./Milkey__Rose.jpg",
+    image: "./Milkey__Rose.webp",
     alt_Name: "Milky Rose Cake",
     item: "Milky Rose",
     cakeD:
@@ -120,7 +120,7 @@ export const CAKE_ITEMS = [
   },
   {
     id: "008",
-    image: "./Black_Forrest.jpg",
+    image: "./Black_Forrest.webp",
     alt_Name: "Black Forest Cake",
     item: "Black Forest",
     cakeD:

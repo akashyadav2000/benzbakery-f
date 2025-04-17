@@ -1,7 +1,7 @@
 export const CUP_CAKE_ITEMS = [
   {
     id: "021",
-    image: "./Ice_Cream_Sundae.jpg",
+    image: "./Ice_Cream_Sundae.webp",
     alt_Name: "Ice_Cream_Sundae_Cup_Cake",
     item: "Ice Cream Sundae",
     flavor: "Ice Cream",
@@ -18,7 +18,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "022",
-    image: "./Vanilla_And_Strawberry.jpg",
+    image: "./Vanilla_And_Strawberry.webp",
     alt_Name: "Vanilla_Strawberry_Cup_Cake",
     item: "Vanilla Strawberry",
     flavor: "Strawberry",
@@ -35,7 +35,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "023",
-    image: "./Vanilla_Funfetti.jpg",
+    image: "./Vanilla_Funfetti.webp",
     alt_Name: "Vanilla_Funfetti_Cup_Cake",
     item: "Vanilla Funfetti",
     flavor: "Vanilla",
@@ -52,7 +52,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "024",
-    image: "./Dark_Chocolate.jpg",
+    image: "./Dark_Chocolate.webp",
     alt_Name: "Dark_Chocolate_Cup_Cake",
     item: "Dark Chocolate",
     flavor: "Dark Chocolate",
@@ -69,7 +69,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "025",
-    image: "./Mint_Chocolate.jpg",
+    image: "./Mint_Chocolate.webp",
     alt_Name: "Mint_Chocolate_Cup_Cake",
     item: "Mint Chocolate",
     flavor: "Mint",
@@ -86,7 +86,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "026",
-    image: "./Christmas_Tree.jpg",
+    image: "./Christmas_Tree.webp",
     alt_Name: "Christmas_Tree_Cup_Cake",
     item: "Christmas Tree",
     flavor: "Buttercream",
@@ -103,7 +103,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "027",
-    image: "./Red_Velvet_Cupcake.jpg",
+    image: "./Red_Velvet_Cupcake.webp",
     alt_Name: "Red_Velvet_Cupcake_Cup_Cake",
     item: "Red Velvet",
     flavor: "Red Velvet",
@@ -120,7 +120,7 @@ export const CUP_CAKE_ITEMS = [
   },
   {
     id: "028",
-    image: "./Pista_Chocolate.jpg",
+    image: "./Pista_Chocolate.webp",
     alt_Name: "Pista_Chocolate_Cup_Cake",
     item: "Pista Chocolate",
     flavor: "Pistachio",

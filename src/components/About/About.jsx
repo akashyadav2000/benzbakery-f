@@ -8,7 +8,7 @@ function About() {
       <div
         className="poppins flexible-height sm:h-screen w-full mt-[50px] sm:mt-14 bg-cover bg-left"
         style={{
-          backgroundImage: 'url("/about-background.jpg")',
+          backgroundImage: 'url("/about-background.webp")',
         }}
       >
         <div className=" absolute bottom-[3%] md:bottom-[5%] xl:bottom-[7%] left-1/2 w-[95%] lg:w-[90%] xl:w-[85%] 2xl:w-[75%] transform -translate-x-1/2  bg-white/75  rounded-lg px-3 sm:px-6 md:px-7 lg:px-9 2xl:px-12 py-1">
@@ -39,7 +39,7 @@ function About() {
           {/* Value Card 1 */}
           <div className="flex flex-col items-center text-center w-48 md:w-56 xl:w-64">
             <LazyLoadImage
-              src="./Recipes.png"
+              src="./Recipes.webp"
               alt="Recipes"
               // effect="blur"
               className="h-12 sm:h-16 w-auto"
@@ -56,7 +56,7 @@ function About() {
           {/* Value Card 2 */}
           <div className="flex flex-col items-center text-center w-48 md:w-56 xl:w-64">
             <LazyLoadImage
-              src="./love.png"
+              src="./love.webp"
               alt="Baked with Love"
               // effect="blur"
               className="h-12 sm:h-16 w-auto"
@@ -73,7 +73,7 @@ function About() {
           {/* Value Card 3 */}
           <div className="flex flex-col items-center text-center w-48 md:w-56 xl:w-64">
             <LazyLoadImage
-              src="./Price.png"
+              src="./Price.webp"
               alt="Best Price"
               // effect="blur"
               className="h-12 sm:h-16 w-auto"
@@ -90,7 +90,7 @@ function About() {
           {/* Value Card 4 */}
           <div className="flex flex-col items-center text-center w-48 md:w-56 xl:w-64">
             <LazyLoadImage
-              src="./Quality.png"
+              src="./Quality.webp"
               alt="Quality Products"
               // effect="blur"
               className="h-12 sm:h-16 w-auto"

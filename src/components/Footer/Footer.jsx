@@ -62,7 +62,7 @@ const Footer = () => {
         {/* Logo & About */}
         <div className="flex lg:flex-wrap items-center max-[1024px]:justify-center w-full lg:w-70 xl:w-85 space-y-0 md:space-y-4">
           <LazyLoadImage
-            src="/pink.png"
+            src="/pink.webp"
             alt="Logo"
             className="w-11 md:w-12 lg:w-13 xl:w-14"
           />

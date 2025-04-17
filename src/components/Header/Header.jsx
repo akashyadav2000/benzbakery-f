@@ -141,7 +141,7 @@ const Header = () => {
             onClick={() => handleSectionClick("home")}
             className="cursor-pointer"
           >
-            <img src="/Benz_Logo.png" alt="Lodha Preferred Partner" className="h-9 md:h-11 w-auto" />
+            <img src="/Benz_Logo.webp" alt="Lodha Preferred Partner" className="h-9 md:h-11 w-auto" />
           </ScrollLink>
         </div>
 
@@ -195,14 +195,14 @@ const Header = () => {
         {/* Cart and Login buttons */}
         <div className="flex items-center space-x-2 sm:space-x-3">
           <Link to="Cart" onClick={handleCartClick} className="relative flex items-center justify-center" aria-label="cart_btn">
-            <img src="/cart-icon.png" className="h-[21px] sm:h-5.5 md:h-6.5 w-auto mr-[2px] sm:mr-1 lg:mr-3" alt="cart_img" />
+            <img src="/cart-icon.webp" className="h-[21px] sm:h-5.5 md:h-6.5 w-auto mr-[2px] sm:mr-1 lg:mr-3" alt="cart_img" />
             <span className="poppins absolute sm:top-[4%] lg:top-[5%] left-[55%] sm:left-[53%] md:left-[46%] lg:left-[44.5%] transform -translate-x-1/2 -translate-y-1/3 text-red-600 text-[14.5px] md:text-[15px] lg:text-[15.5px] font-semibold">
               {totalQuantity}
             </span>
           </Link>
 
           <Link onClick={handleLoginClick} className="flex items-center justify-center" aria-label="login_btn">
-            <img src="/login-icon.png" className="h-[21px] sm:h-5.5 md:h-6.5 w-auto" alt="login_img" />
+            <img src="/login-icon.webp" className="h-[21px] sm:h-5.5 md:h-6.5 w-auto" alt="login_img" />
           </Link>
 
           {/* Mobile menu botton */}

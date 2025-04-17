@@ -119,7 +119,7 @@ export default function Signup() {
         {/* Left Side - Image */}
         <div className="hidden sm:block sm:w-1/2">
           <img
-            src="/signup-login-bg.jpg"
+            src="/signup-login-bg.webp"
             alt="Cupcake Tower"
             className="object-cover object-top h-full w-full"
           />

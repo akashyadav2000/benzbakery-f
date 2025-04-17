@@ -1,7 +1,7 @@
 export const PASTRY_ITEMS = [
   {
     id: "011",
-    image: "./Rainbow_Pastry.jpg",
+    image: "./Rainbow_Pastry.webp",
     alt_Name: "Rainbow Pastry",
     item: "Rainbow Pastry",
     flavor: "Vanilla",
@@ -18,7 +18,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "012",
-    image: "./Blueberry__Cream.jpg",
+    image: "./Blueberry__Cream.webp",
     alt_Name: "Blueberry Cream Pastry",
     item: "Blueberry Cream",
     flavor: "Blueberry",
@@ -35,7 +35,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "013",
-    image: "./Moroccan_Orange.jpg",
+    image: "./Moroccan_Orange.webp",
     alt_Name: "Moroccan Orange Pastry",
     item: "Moroccan Orange",
     flavor: "Orange",
@@ -52,7 +52,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "014",
-    image: "./Red_Velvet_Pastry.jpg",
+    image: "./Red_Velvet_Pastry.webp",
     alt_Name: "Red Velvet Pastry",
     item: "Red Velvet Pastry",
     flavor: "Red Velvet",
@@ -69,7 +69,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "015",
-    image: "./Blackberry_Chese_Puff.jpg",
+    image: "./Blackberry_Chese_Puff.webp",
     alt_Name: "Blackberry Cheese Pastry",
     item: "Blackberry Cheese",
     flavor: "Blackberry",
@@ -86,7 +86,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "016",
-    image: "./Carrot_Velvet.jpg",
+    image: "./Carrot_Velvet.webp",
     alt_Name: "Carrot Velvet Pastry",
     item: "Carrot Velvet",
     flavor: "Carrot",
@@ -103,7 +103,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "017",
-    image: "./Tiramisu.jpg",
+    image: "./Tiramisu.webp",
     alt_Name: "Tiramisu Pastry",
     item: "Tiramisu",
     flavor: "Coffee",
@@ -120,7 +120,7 @@ export const PASTRY_ITEMS = [
   },
   {
     id: "018",
-    image: "./Medovik.jpeg",
+    image: "./Medovik.webp",
     alt_Name: "Medovik Pastry",
     item: "Medovik",
     flavor: "Honey",
